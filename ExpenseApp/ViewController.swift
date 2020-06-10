@@ -9,10 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var labelStart: UILabel!
+    
+    
+    
+    @IBAction func changeText(_ sender: Any) {
+        labelStart.text = "Added Expense"
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
 
 
