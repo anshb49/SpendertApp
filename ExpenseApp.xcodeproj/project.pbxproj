@@ -15,7 +15,6 @@
 		D4C4615524919CDA000600DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C4615324919CDA000600DB /* LaunchScreen.storyboard */; };
 		D4C4616024919CDA000600DB /* ExpenseAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C4615F24919CDA000600DB /* ExpenseAppTests.swift */; };
 		D4C4616B24919CDA000600DB /* ExpenseAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C4616A24919CDA000600DB /* ExpenseAppUITests.swift */; };
-		D4C4617B24933B11000600DB /* blue_green gradient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4C4617A24933B10000600DB /* blue_green gradient.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +49,6 @@
 		D4C4616624919CDA000600DB /* ExpenseAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpenseAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C4616A24919CDA000600DB /* ExpenseAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseAppUITests.swift; sourceTree = "<group>"; };
 		D4C4616C24919CDA000600DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4C4617A24933B10000600DB /* blue_green gradient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "blue_green gradient.jpg"; path = "../../blue_green gradient.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +101,6 @@
 			children = (
 				D4C4614824919CD8000600DB /* AppDelegate.swift */,
 				D4C4614A24919CD8000600DB /* SceneDelegate.swift */,
-				D4C4617A24933B10000600DB /* blue_green gradient.jpg */,
 				D4C4614C24919CD8000600DB /* ViewController.swift */,
 				D4C4614E24919CD8000600DB /* Main.storyboard */,
 				D4C4615124919CDA000600DB /* Assets.xcassets */,
@@ -235,7 +232,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4C4617B24933B11000600DB /* blue_green gradient.jpg in Resources */,
 				D4C4615524919CDA000600DB /* LaunchScreen.storyboard in Resources */,
 				D4C4615224919CDA000600DB /* Assets.xcassets in Resources */,
 				D4C4615024919CD8000600DB /* Main.storyboard in Resources */,
