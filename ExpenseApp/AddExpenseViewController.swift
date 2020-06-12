@@ -19,7 +19,11 @@ class AddExpenseViewController: UIViewController {
         super.viewDidLoad()
         
         
-
+        let Tap:UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
+        
+        view.addGestureRecognizer(Tap)
+        
+        
         // Do any additional setup after loading the view.
         
         ConfirmAdd.layer.cornerRadius = 20
@@ -29,6 +33,9 @@ class AddExpenseViewController: UIViewController {
         LeavePage.clipsToBounds = true
     }
     
+    @objc func DismissKeyboard() {
+        view.endEditing(true)
+    }
 
     /*
     // MARK: - Navigation
