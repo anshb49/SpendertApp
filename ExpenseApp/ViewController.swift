@@ -10,16 +10,43 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var labelStart: UILabel!
+    
+    @IBOutlet weak var MonthlyAverage: UIButton!
+    
+    @IBOutlet weak var WeeklyAverage: UIButton!
+    
+    @IBOutlet weak var RecentTransaction: UIButton!
+    
+    @IBOutlet weak var AddExpense: UIButton!
     
     
+    @IBOutlet weak var ExpenseSummary: UIButton!
     
-    @IBAction func changeText(_ sender: Any) {
-        labelStart.text = "Added Expense"
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
+        
+        MonthlyAverage.layer.cornerRadius = 20
+        MonthlyAverage.clipsToBounds = true
+        //MonthlyAverage.layer.borderWidth = 1;
+        //MonthlyAverage.layer.borderColor = UIColor.init(displayP3Red: 0, green: 255, blue: 162, alpha: 1).cgColor
+        
+        
+        
+        WeeklyAverage.layer.cornerRadius = 20
+        WeeklyAverage.clipsToBounds = true
+        
+        RecentTransaction.layer.cornerRadius = 20
+        RecentTransaction.clipsToBounds = true
+        
+        AddExpense.layer.cornerRadius = 20
+        AddExpense.clipsToBounds = true
+        
+        ExpenseSummary.layer.cornerRadius = 20
+        ExpenseSummary.clipsToBounds = true
         
     }
 
