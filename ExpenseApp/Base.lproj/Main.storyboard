@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="115.84821428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Expense View Controller-->
         <scene sceneID="eOM-eG-TAt">
             <objects>
-                <viewController id="Quh-9D-iJj" sceneMemberID="viewController">
+                <viewController id="Quh-9D-iJj" customClass="AddExpenseViewController" customModule="ExpenseApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yQk-TB-4BM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,6 +136,10 @@
                         <color key="backgroundColor" red="0.95311063529999995" green="0.94864994290000004" blue="0.96863085029999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="66W-lU-HKc"/>
                     </view>
+                    <connections>
+                        <outlet property="ConfirmAdd" destination="x4X-8C-wBA" id="Xi0-qH-0Ld"/>
+                        <outlet property="LeavePage" destination="8FK-Dh-RQV" id="d4x-1p-6nS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7SW-PX-OdY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
