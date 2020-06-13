@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4A542E224958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A542E124958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png */; };
 		D4C4614924919CD8000600DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C4614824919CD8000600DB /* AppDelegate.swift */; };
 		D4C4614B24919CD8000600DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C4614A24919CD8000600DB /* SceneDelegate.swift */; };
 		D4C4614D24919CD8000600DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C4614C24919CD8000600DB /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D4A542E124958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2020-06-13 at 3.22.06 PM.png"; sourceTree = "<group>"; };
 		D4C4614524919CD8000600DB /* ExpenseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C4614824919CD8000600DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4C4614A24919CD8000600DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				D4C4614A24919CD8000600DB /* SceneDelegate.swift */,
 				D4C4614C24919CD8000600DB /* ViewController.swift */,
 				D4C4614E24919CD8000600DB /* Main.storyboard */,
+				D4A542E124958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png */,
 				D4C4615124919CDA000600DB /* Assets.xcassets */,
 				D4C4615324919CDA000600DB /* LaunchScreen.storyboard */,
 				D4C4615624919CDA000600DB /* Info.plist */,
@@ -235,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A542E224958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png in Resources */,
 				D4C4615524919CDA000600DB /* LaunchScreen.storyboard in Resources */,
 				D4C4615224919CDA000600DB /* Assets.xcassets in Resources */,
 				D4C4615024919CD8000600DB /* Main.storyboard in Resources */,
@@ -439,6 +443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RMT3R5P3M;
 				INFOPLIST_FILE = ExpenseApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -456,6 +461,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RMT3R5P3M;
 				INFOPLIST_FILE = ExpenseApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

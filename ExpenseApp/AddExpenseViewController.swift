@@ -10,6 +10,12 @@ import UIKit
 
 class AddExpenseViewController: UIViewController {
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    
+    
     @IBOutlet weak var ConfirmAdd: UIButton!
     
     @IBOutlet weak var LeavePage: UIButton!
