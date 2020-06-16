@@ -15,10 +15,18 @@ class AddExpenseViewController: UIViewController {
     }
     
     
+    @IBOutlet weak var NameInput: UITextField!
+    
+    @IBOutlet weak var DateInput: UITextField!
+    
+    @IBOutlet weak var TimeInput: UITextField!
     
     @IBOutlet weak var ConfirmAdd: UIButton!
     
     @IBOutlet weak var LeavePage: UIButton!
+    
+    @IBOutlet weak var ExpenseAmount: UITextField!
+    
     
     
     override func viewDidLoad() {
@@ -43,6 +51,23 @@ class AddExpenseViewController: UIViewController {
         view.endEditing(true)
     }
 
+    
+    @IBAction func AddExpense(_ sender: Any) {
+        let LatestExpense = Expense()
+        LatestExpense.name = NameInput.text!
+        LatestExpense.date = DateInput.text!
+        LatestExpense.time = TimeInput.text!
+        /*let purchaseAmountAsString = AmountInput.text!
+        let purchaseAmount = Double(purchaseAmountAsString)
+        LatestExpense.amount = purchaseAmount!*/
+        
+        
+        print(LatestExpense.name)
+        print(LatestExpense.date)
+        print(LatestExpense.time)
+        print(LatestExpense.amount)
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -119,6 +119,9 @@
                                 <state key="normal" title="Add Expense">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="AddExpense:" destination="Quh-9D-iJj" eventType="touchUpInside" id="vG3-zY-aGb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8FK-Dh-RQV">
                                 <rect key="frame" x="26" y="777" width="363" height="52"/>
@@ -183,6 +186,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="AddExpense:" destination="Quh-9D-iJj" eventType="editingDidEnd" id="FXR-d0-znP"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.1137265339" green="0.11372355369999999" blue="0.1137255952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -190,7 +196,11 @@
                     </view>
                     <connections>
                         <outlet property="ConfirmAdd" destination="x4X-8C-wBA" id="Xi0-qH-0Ld"/>
+                        <outlet property="DateInput" destination="WaN-d7-nya" id="ehl-L3-9p7"/>
+                        <outlet property="ExpenseAmount" destination="8kH-9U-lY4" id="R9A-OV-Idh"/>
                         <outlet property="LeavePage" destination="8FK-Dh-RQV" id="d4x-1p-6nS"/>
+                        <outlet property="NameInput" destination="u1J-bZ-4zg" id="miC-Z5-BSY"/>
+                        <outlet property="TimeInput" destination="Nrt-Ls-Ha6" id="h42-fH-Qyp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7SW-PX-OdY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
