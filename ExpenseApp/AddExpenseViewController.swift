@@ -14,6 +14,7 @@ class AddExpenseViewController: UIViewController {
         return .lightContent
     }
     
+    var TotalExpenses = [Expense] ()
     
     @IBOutlet weak var NameInput: UITextField!
     
@@ -66,6 +67,10 @@ class AddExpenseViewController: UIViewController {
         print(LatestExpense.date)
         print(LatestExpense.time)
         print(LatestExpense.amount)
+        
+        TotalExpenses.append(LatestExpense)
+        
+        print(TotalExpenses.count)
     }
     
     /*
