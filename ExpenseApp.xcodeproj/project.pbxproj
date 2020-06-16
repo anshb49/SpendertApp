@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		423458E62499792600B774D1 /* expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423458E52499792600B774D1 /* expense.swift */; };
 		D4A542E224958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A542E124958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png */; };
 		D4C4614924919CD8000600DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C4614824919CD8000600DB /* AppDelegate.swift */; };
 		D4C4614B24919CD8000600DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C4614A24919CD8000600DB /* SceneDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		423458E52499792600B774D1 /* expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expense.swift; sourceTree = "<group>"; };
 		D4A542E124958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2020-06-13 at 3.22.06 PM.png"; sourceTree = "<group>"; };
 		D4C4614524919CD8000600DB /* ExpenseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C4614824919CD8000600DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				D4C4615324919CDA000600DB /* LaunchScreen.storyboard */,
 				D4C4615624919CDA000600DB /* Info.plist */,
 				D4C4617C2494297B000600DB /* AddExpenseViewController.swift */,
+				423458E52499792600B774D1 /* expense.swift */,
 			);
 			path = ExpenseApp;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				423458E62499792600B774D1 /* expense.swift in Sources */,
 				D4C4614D24919CD8000600DB /* ViewController.swift in Sources */,
 				D4C4617D2494297B000600DB /* AddExpenseViewController.swift in Sources */,
 				D4C4614924919CD8000600DB /* AppDelegate.swift in Sources */,
