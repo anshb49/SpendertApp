@@ -58,9 +58,17 @@ class AddExpenseViewController: UIViewController {
         LatestExpense.name = NameInput.text!
         LatestExpense.date = DateInput.text!
         LatestExpense.time = TimeInput.text!
-        /*let purchaseAmountAsString = AmountInput.text!
-        let purchaseAmount = Double(purchaseAmountAsString)
-        LatestExpense.amount = purchaseAmount!*/
+        let purchaseAmountAsString = ExpenseAmount.text!
+        if (purchaseAmountAsString == "") {
+            LatestExpense.amount = 0;
+        } else {
+            let purchaseAmount = Double(purchaseAmountAsString)
+            
+            LatestExpense.amount = purchaseAmount!
+        }
+        
+        
+        
         
         
         print(LatestExpense.name)
@@ -72,6 +80,15 @@ class AddExpenseViewController: UIViewController {
         
         print(TotalExpenses.count)
     }
+    
+    @IBAction func ResetInputs(_ sender: Any) {
+        NameInput.text = ""
+        DateInput.text = ""
+        TimeInput.text = ""
+        ExpenseAmount.text = ""
+    }
+    
+    
     
     /*
     // MARK: - Navigation
