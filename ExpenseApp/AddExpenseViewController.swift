@@ -26,7 +26,7 @@ class AddExpenseViewController: UIViewController {
     
     @IBOutlet weak var LeavePage: UIButton!
     
-    @IBOutlet weak var ExpenseAmount: UITextField!
+    @IBOutlet weak var AmountIInput: UITextField!
     
     
     
@@ -58,16 +58,11 @@ class AddExpenseViewController: UIViewController {
         LatestExpense.name = NameInput.text!
         LatestExpense.date = DateInput.text!
         LatestExpense.time = TimeInput.text!
-        let purchaseAmountAsString = ExpenseAmount.text!
-        if (purchaseAmountAsString == "") {
-            LatestExpense.amount = 0;
-        } else {
-            let purchaseAmount = Double(purchaseAmountAsString)
-            
-            LatestExpense.amount = purchaseAmount!
-        }
         
         
+        let textAmount = AmountIInput.text!
+        let moneyValue = NumberFormatter().number(from: textAmount)?.doubleValue
+        LatestExpense.amount = moneyValue!
         
         
         
@@ -75,6 +70,7 @@ class AddExpenseViewController: UIViewController {
         print(LatestExpense.date)
         print(LatestExpense.time)
         print(LatestExpense.amount)
+
         
         TotalExpenses.append(LatestExpense)
         
@@ -85,7 +81,7 @@ class AddExpenseViewController: UIViewController {
         NameInput.text = ""
         DateInput.text = ""
         TimeInput.text = ""
-        ExpenseAmount.text = ""
+
     }
     
     

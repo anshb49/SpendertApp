@@ -182,23 +182,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8kH-9U-lY4">
-                                <rect key="frame" x="29" y="521" width="365" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHA-If-2Yr">
+                                <rect key="frame" x="27" y="544" width="360" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <action selector="AddExpense:" destination="Quh-9D-iJj" eventType="editingDidEnd" id="FXR-d0-znP"/>
-                                </connections>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.1137265339" green="0.11372355369999999" blue="0.1137255952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="66W-lU-HKc"/>
                     </view>
                     <connections>
+                        <outlet property="AmountIInput" destination="lHA-If-2Yr" id="qoF-mu-rIh"/>
                         <outlet property="ConfirmAdd" destination="x4X-8C-wBA" id="Xi0-qH-0Ld"/>
                         <outlet property="DateInput" destination="WaN-d7-nya" id="ehl-L3-9p7"/>
-                        <outlet property="ExpenseAmount" destination="8kH-9U-lY4" id="R9A-OV-Idh"/>
                         <outlet property="LeavePage" destination="8FK-Dh-RQV" id="d4x-1p-6nS"/>
                         <outlet property="NameInput" destination="u1J-bZ-4zg" id="miC-Z5-BSY"/>
                         <outlet property="TimeInput" destination="Nrt-Ls-Ha6" id="h42-fH-Qyp"/>
