@@ -20,8 +20,6 @@ class AddExpenseViewController: UIViewController {
     
     @IBOutlet weak var DateInput: UITextField!
     
-    @IBOutlet weak var TimeInput: UITextField!
-    
     @IBOutlet weak var ConfirmAdd: UIButton!
     
     @IBOutlet weak var LeavePage: UIButton!
@@ -57,7 +55,12 @@ class AddExpenseViewController: UIViewController {
         let LatestExpense = Expense()
         LatestExpense.name = NameInput.text!
         LatestExpense.date = DateInput.text!
-        LatestExpense.time = TimeInput.text!
+        
+       let date = Date()
+       let calendar = Calendar.current
+       let hour = calendar.component(.hour, from: date)
+       let minutes = calendar.component(.minute, from: date)
+       LatestExpense.time = String(hour) + ":" + String(minutes)
         
         
         let textAmount = AmountIInput.text!
@@ -80,7 +83,7 @@ class AddExpenseViewController: UIViewController {
     @IBAction func ResetInputs(_ sender: Any) {
         NameInput.text = ""
         DateInput.text = ""
-        TimeInput.text = ""
+        //TimeInput.text = ""
 
     }
     
