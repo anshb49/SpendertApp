@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Expense {
+class Expense:NSObject {
     var name = ""
     var date = ""
     var time = ""
