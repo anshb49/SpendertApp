@@ -65,35 +65,38 @@ class ViewController: UIViewController {
     func GetFrontPageData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Entity")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LatestTestEntity")
         request.returnsObjectsAsFaults = false
+        
         var LastExpenseAmount = 0.00
         var LastExpenseDate = ""
         var MonthlyTotalExpense = 0.00
-        let formatter : DateFormatter = DateFormatter()
-           formatter.dateFormat = "M/yy"
-           let todayMonthYear : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
-           
+        var WeeklyTotalExpense = 0.00
         
         do {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
                 LastExpenseAmount = data.value(forKey: "purchaseAmount") as? Double ?? 0.00
                 LastExpenseDate = data.value(forKey: "dateOfPurchase") as? String ?? "NO DATE"
-                var curFormattedDate = String()
-                curFormattedDate = FormatDate(dateToFormat: LastExpenseDate)
+                let curFormattedDate = FormatDate(dateToFormat: LastExpenseDate)
                 
-                if (todayMonthYear.compare(curFormattedDate).rawValue == 0) {
+                if(GetCurrentMonthAndYear().compare(curFormattedDate).rawValue == 0) {
                     MonthlyTotalExpense += LastExpenseAmount
                 }
                 
+                if (LastExpenseDate != "NO DATE PROVIDED" && LastExpenseDate != "NO DATE" && isInSameWeek(as: ConvertStringToDate(date: LastExpenseDate))) {
+                    WeeklyTotalExpense += LastExpenseAmount
+                }
                 
                 
             }
+            
             let FormattedRecentExpense = String(format: "%.2f", LastExpenseAmount)
             RecentExpenseLabel.text = "$" + "\(FormattedRecentExpense)"
             let FormattedMonthlyExpense = String(format: "%.2f", MonthlyTotalExpense)
             MonthlyTotalLabel.text = "$" + "\(FormattedMonthlyExpense)"
+            let FormattedWeeklyExpense = String(format: "%.2f", WeeklyTotalExpense)
+            WeeklyTotalLabel.text = "$" + "\(FormattedWeeklyExpense)"
             
         } catch {
             print("FAILED")
@@ -114,6 +117,30 @@ class ViewController: UIViewController {
             }
         }
         return newDateFormat
+    }
+    
+    func GetCurrentMonthAndYear() -> String {
+        let formatter : DateFormatter = DateFormatter()
+        formatter.dateFormat = "M/yy"
+        let todayMonthYear : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
+        return todayMonthYear
+    }
+    
+    func ConvertStringToDate(date: String) -> Date {
+        let isoDate = date
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "M/d/yy"
+        let newDate = dateFormatter.date(from:isoDate)!
+        return newDate
+    }
+    
+    func isEqual(to date: Date, toGranularity component: Calendar.Component, in calendar: Calendar = .current) -> Bool {
+        return calendar.isDate(Date(), equalTo: date, toGranularity: component)
+    }
+    
+    func isInSameWeek(as date: Date) -> Bool {
+        return isEqual(to: date, toGranularity: .weekOfYear)
     }
 
 
