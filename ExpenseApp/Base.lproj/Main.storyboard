@@ -153,6 +153,7 @@
                                 </state>
                                 <connections>
                                     <action selector="AddExpense:" destination="Quh-9D-iJj" eventType="touchUpInside" id="7Gg-RD-Oey"/>
+                                    <segue destination="BYZ-38-t0r" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="D3r-5i-NgM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8FK-Dh-RQV">
@@ -224,4 +225,7 @@
             <point key="canvasLocation" x="900.00000000000011" y="115.84821428571428"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="D3r-5i-NgM"/>
+    </inferredMetricsTieBreakers>
 </document>
