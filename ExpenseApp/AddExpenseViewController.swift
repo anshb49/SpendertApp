@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddExpenseViewController: UIViewController {
     
@@ -15,6 +16,11 @@ class AddExpenseViewController: UIViewController {
     }
     
     var TotalExpenses = [Expense] ()
+    var LastExpense = Expense()
+    var number = Int()
+    var name = String()
+    var date = String()
+    var amount = Double()
     
     @IBOutlet weak var NameInput: UITextField!
     
@@ -44,17 +50,22 @@ class AddExpenseViewController: UIViewController {
         
         LeavePage.layer.cornerRadius = 20
         LeavePage.clipsToBounds = true
+        
+        GetData()
+        //print(LastExpense.amount)
     }
     
     @objc func DismissKeyboard() {
         view.endEditing(true)
     }
 
-    
     @IBAction func AddExpense(_ sender: Any) {
-        let LatestExpense = Expense()
-        LatestExpense.name = NameInput.text!
-        LatestExpense.date = DateInput.text!
+        
+        
+        
+       let LatestExpense = Expense()
+       LatestExpense.name = NameInput.text!
+       LatestExpense.date = DateInput.text!
         
        let date = Date()
        let calendar = Calendar.current
@@ -67,26 +78,76 @@ class AddExpenseViewController: UIViewController {
         let moneyValue = NumberFormatter().number(from: textAmount)?.doubleValue
         LatestExpense.amount = moneyValue!
         
-        
-        
-        print(LatestExpense.name)
+        SaveData(purchaseName: LatestExpense.name, dateOfPurchase: LatestExpense.date, purchaseAmount: LatestExpense.amount)
+        GetData()
+        /*print(LatestExpense.name)
         print(LatestExpense.date)
         print(LatestExpense.time)
-        print(LatestExpense.amount)
-
+        print(LatestExpense.amount)*/
         
-        TotalExpenses.append(LatestExpense)
         
-        print(TotalExpenses.count)
+        //TotalExpenses.append(LatestExpense)
+        
+        //print(TotalExpenses.count)
     }
     
     @IBAction func ResetInputs(_ sender: Any) {
         NameInput.text = ""
         DateInput.text = ""
         //TimeInput.text = ""
-
     }
     
+    func SaveData(purchaseName: String, dateOfPurchase: String, purchaseAmount: Double) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Entity", in: context)
+        let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+        
+        print(purchaseName)
+        
+        let formatter : DateFormatter = DateFormatter()
+        formatter.dateFormat = "M/d/yy"
+        let myDate : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
+        print(myDate)
+        
+        
+        newEntity.setValue(purchaseName, forKey: "nameOfPurchase")
+        newEntity.setValue(myDate, forKey: "dateOfPurchase")
+        newEntity.setValue(purchaseAmount, forKey: "purchaseAmount")
+        
+        do {
+            try context.save()
+            print("SAVED")
+        } catch {
+            print("ERROR SAVING")
+        }
+    }
+    
+    func GetData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Entity")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                //name = data.value(forKey: "nameOfPurchase") as! String
+                name = data.value(forKey: "nameOfPurchase") as? String ?? "NO STORE PROVIDED"
+                date = data.value(forKey: "dateOfPurchase") as? String ?? "NO DATE PROVIDED"
+                amount = data.value(forKey: "purchaseAmount") as? Double ?? 0.00
+                print(name)
+                print(date)
+                print(amount)
+                print("")
+            }
+            /*print(name)
+            print(date)
+            print(amount)*/
+        } catch {
+            print("FAILED")
+        }
+    }
     
     
     /*

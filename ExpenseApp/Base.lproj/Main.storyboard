@@ -80,6 +80,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgA-xA-UCf">
+                                <rect key="frame" x="47" y="571" width="339" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etz-hn-kJY">
+                                <rect key="frame" x="47" y="396" width="339" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEU-4L-xGS">
+                                <rect key="frame" x="47" y="224" width="339" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1137265339" green="0.11372355369999999" blue="0.1137255952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -88,8 +109,11 @@
                         <outlet property="AddExpense" destination="i4N-Us-BqR" id="bBQ-rG-PzB"/>
                         <outlet property="ExpenseSummary" destination="bLt-IQ-aae" id="CPs-n2-nnT"/>
                         <outlet property="MonthlyAverage" destination="I2v-tS-JJd" id="3qf-6Q-hLk"/>
+                        <outlet property="MonthlyTotalLabel" destination="BEU-4L-xGS" id="bfw-iR-YRl"/>
+                        <outlet property="RecentExpenseLabel" destination="QgA-xA-UCf" id="sGI-Xg-Lo5"/>
                         <outlet property="RecentTransaction" destination="Tsu-oR-jKc" id="kSh-LX-kSx"/>
                         <outlet property="WeeklyAverage" destination="kCr-JR-AXx" id="8Rd-Vt-wuA"/>
+                        <outlet property="WeeklyTotalLabel" destination="etz-hn-kJY" id="h0i-wU-x5w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

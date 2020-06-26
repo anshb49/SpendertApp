@@ -14,3 +14,7 @@ class Expense:NSObject {
     var time = ""
     var amount = 0.0
 }
+
+class AllExpense:NSObject {
+    var TotalExpenses = [Expense]()
+}
