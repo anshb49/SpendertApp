@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         return .lightContent
     }
     
+    @IBOutlet weak var RecentStoreLabel: UILabel!
     
     @IBOutlet weak var MonthlyAverage: UIButton!
     
@@ -73,9 +74,12 @@ class ViewController: UIViewController {
         var MonthlyTotalExpense = 0.00
         var WeeklyTotalExpense = 0.00
         
+        var LastExpenseStore = ""
+        
         do {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
+                LastExpenseStore = data.value(forKey: "nameOfPurchase") as? String ?? "NO STORE"
                 LastExpenseAmount = data.value(forKey: "purchaseAmount") as? Double ?? 0.00
                 LastExpenseDate = data.value(forKey: "dateOfPurchase") as? String ?? "NO DATE"
                 let curFormattedDate = FormatDate(dateToFormat: LastExpenseDate)
@@ -97,6 +101,8 @@ class ViewController: UIViewController {
             MonthlyTotalLabel.text = "$" + "\(FormattedMonthlyExpense)"
             let FormattedWeeklyExpense = String(format: "%.2f", WeeklyTotalExpense)
             WeeklyTotalLabel.text = "$" + "\(FormattedWeeklyExpense)"
+            
+            RecentStoreLabel.text = LastExpenseStore
             
         } catch {
             print("FAILED")
