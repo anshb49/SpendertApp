@@ -233,7 +233,7 @@
         <scene sceneID="b8b-sk-fgK">
             <objects>
                 <viewController id="vQP-cb-TZ2" customClass="MonthlyGraphViewController" customModule="ExpenseApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mTe-CH-KBt" customClass="LineChartView" customModule="Charts">
+                    <view key="view" contentMode="scaleToFill" id="mTe-CH-KBt" customClass="BarChartView" customModule="Charts">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.859925176056338" colorSpace="custom" customColorSpace="displayP3"/>
