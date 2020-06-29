@@ -42,7 +42,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         let barView = BarChartView()
         barView.backgroundColor = .systemGray
         barView.xAxis.labelPosition = .bottom
-        barView.xAxis.valueFormatter = IndexAxisValueFormatter(values: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"])
+        barView.xAxis.valueFormatter = IndexAxisValueFormatter(values: ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov"])
         barView.xAxis.granularity = 1
         barView.xAxis.setLabelCount(12, force: false)
         barView.rightAxis.enabled = false
@@ -68,8 +68,6 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         barChartView.heightToWidth(of: view)
         //barChartView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.width)
         barChartView.center = view.center
-        //view.addSubview(barChartView)
-        
         
         setData()
         
@@ -81,7 +79,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
     
     func setData() {
         let set1 = BarChartDataSet(entries: monthlyExpenseValues, label: "Monthly Expenses")
-        set1.colors = ChartColorTemplates.joyful()
+        set1.colors = ChartColorTemplates.colorful()
         let data = BarChartData(dataSet:set1)
         barChartView.data = data
         
@@ -124,10 +122,10 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
     ]
     
     let monthlyExpenseValues: [BarChartDataEntry] = [
-        /*BarChartDataEntry(x: 6, y: 211.38),
-        BarChartDataEntry(x: 7, y: 234)*/
+        BarChartDataEntry(x: 6, y: 241.71),
+        BarChartDataEntry(x: 18, y: 234.27)
         
-        BarChartDataEntry(x: 0.0, y: 0.0),
+        /*BarChartDataEntry(x: 0.0, y: 0.0),
         BarChartDataEntry(x: 1.0, y: 1.0),
         BarChartDataEntry(x: 2.0, y: 2.0),
         BarChartDataEntry(x: 3.0, y: 3.0),
@@ -136,7 +134,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         BarChartDataEntry(x: 6.0, y: 6.0),
         BarChartDataEntry(x: 7.0, y: 7.0),
         BarChartDataEntry(x: 8.0, y: 8.0),
-        BarChartDataEntry(x: 9.0, y: 9.0)
+        BarChartDataEntry(x: 9.0, y: 9.0)*/
     ]
     
     
