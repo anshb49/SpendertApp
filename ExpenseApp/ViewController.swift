@@ -64,7 +64,7 @@ class ViewController: UIViewController {
     func GetFrontPageData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LatestTestEntity")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ExpensesDatabaseEntity")
         request.returnsObjectsAsFaults = false
         
         var LastExpenseAmount = 0.00
@@ -123,7 +123,7 @@ class ViewController: UIViewController {
     
     func GetCurrentMonthAndYear() -> String {
         let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "M/yy"
+        formatter.dateFormat = "M/yyyy"
         let todayMonthYear : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
         return todayMonthYear
     }
@@ -132,7 +132,7 @@ class ViewController: UIViewController {
         let isoDate = date
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "M/d/yy"
+        dateFormatter.dateFormat = "M/d/yyyy"
         let newDate = dateFormatter.date(from:isoDate)!
         return newDate
     }

@@ -5,6 +5,11 @@
         <attribute name="nameOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="purchaseAmount" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
     </entity>
+    <entity name="ExpensesDatabaseEntity" representedClassName="ExpensesDatabaseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="dateOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="nameOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="purchaseAmount" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+    </entity>
     <entity name="LatestTestEntity" representedClassName="LatestTestEntity" syncable="YES" codeGenerationType="class">
         <attribute name="dateOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="nameOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
@@ -13,5 +18,6 @@
     <elements>
         <element name="Entity" positionX="-63" positionY="-18" width="128" height="88"/>
         <element name="LatestTestEntity" positionX="-63" positionY="9" width="128" height="88"/>
+        <element name="ExpensesDatabaseEntity" positionX="-63" positionY="18" width="128" height="88"/>
     </elements>
 </model>

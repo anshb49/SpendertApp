@@ -100,13 +100,13 @@ class AddExpenseViewController: UIViewController {
     func SaveData(purchaseName: String, dateOfPurchase: String, purchaseAmount: Double) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "LatestTestEntity", in: context)
+        let entity = NSEntityDescription.entity(forEntityName: "ExpensesDatabaseEntity", in: context)
         let newEntity = NSManagedObject(entity: entity!, insertInto: context)
         
         print(purchaseName)
         
         let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "M/d/yy"
+        formatter.dateFormat = "M/d/yyyy"
         let today : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
         print(today)
         
@@ -126,7 +126,7 @@ class AddExpenseViewController: UIViewController {
     func GetData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LatestTestEntity")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ExpensesDatabaseEntity")
         request.returnsObjectsAsFaults = false
         
         do {
