@@ -39,8 +39,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
-        
         MonthlyAverage.layer.cornerRadius = 20
         MonthlyAverage.clipsToBounds = true
         //MonthlyAverage.layer.borderWidth = 1;
@@ -91,8 +89,6 @@ class ViewController: UIViewController {
                 if (LastExpenseDate != "NO DATE PROVIDED" && LastExpenseDate != "NO DATE" && isInSameWeek(as: ConvertStringToDate(date: LastExpenseDate))) {
                     WeeklyTotalExpense += LastExpenseAmount
                 }
-                
-                
             }
             
             let FormattedRecentExpense = String(format: "%.2f", LastExpenseAmount)
