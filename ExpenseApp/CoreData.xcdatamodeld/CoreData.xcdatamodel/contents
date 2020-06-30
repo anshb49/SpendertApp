@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    
+    <entity name="DeleteTestingEntity" representedClassName="DeleteTestingEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="dateOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="nameOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="purchaseAmount" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+    </entity>
     <entity name="ExpensesDatabaseEntity" representedClassName="ExpensesDatabaseEntity" syncable="YES" codeGenerationType="class">
         <attribute name="dateOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="nameOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
@@ -11,9 +15,14 @@
         <attribute name="nameOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="purchaseAmount" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
     </entity>
+    <entity name="MonthlyGraphTestEntity" representedClassName="MonthlyGraphTestEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="month" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="monthlyTotal" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+    </entity>
     <elements>
-        
-        <element name="LatestTestEntity" positionX="-63" positionY="9" width="128" height="88"/>
         <element name="ExpensesDatabaseEntity" positionX="-63" positionY="18" width="128" height="88"/>
+        <element name="LatestTestEntity" positionX="-63" positionY="9" width="128" height="88"/>
+        <element name="DeleteTestingEntity" positionX="-63" positionY="36" width="128" height="88"/>
+        <element name="MonthlyGraphTestEntity" positionX="-54" positionY="54" width="128" height="73"/>
     </elements>
 </model>

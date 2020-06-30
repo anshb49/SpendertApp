@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+@objc(Show)
+
 class AddExpenseViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -21,6 +23,7 @@ class AddExpenseViewController: UIViewController {
     var name = String()
     var date = String()
     var amount = Double()
+    var currentEntityName = "DeleteTestingEntity"
     
     @IBOutlet weak var NameInput: UITextField!
     
@@ -32,6 +35,7 @@ class AddExpenseViewController: UIViewController {
     
     @IBOutlet weak var AmountIInput: UITextField!
     
+    @IBOutlet weak var DeleteLastExpenseTestButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -50,9 +54,9 @@ class AddExpenseViewController: UIViewController {
         
         LeavePage.layer.cornerRadius = 20
         LeavePage.clipsToBounds = true
+        //DeleteAllDataInMonthEntity()
+        //GetData()
         
-        GetData()
-        //print(LastExpense.amount)
     }
     
     @objc func DismissKeyboard() {
@@ -89,19 +93,32 @@ class AddExpenseViewController: UIViewController {
         //TimeInput.text = ""
     }
     
+    func GetMonthlyTotal() -> Double {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "MonthlyGraphTestEntity")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            var result = try context.fetch(request)
+            let latestMonthAmount = (result.last as! NSManagedObject).value(forKey: "monthlyTotal") as! Double
+            context.delete(result.popLast() as! NSManagedObject)
+            try context.save()
+            return latestMonthAmount
+        } catch {
+            print("COULDN'T DELETE")
+        }
+        
+        return 0.0
+    }
+    
     func SaveData(purchaseName: String, dateOfPurchase: String, purchaseAmount: Double) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "ExpensesDatabaseEntity", in: context)
+        let entity = NSEntityDescription.entity(forEntityName: currentEntityName, in: context)
         let newEntity = NSManagedObject(entity: entity!, insertInto: context)
         
         print(purchaseName)
-        
-        /*let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "M/d/yyyy"
-        let today : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
-        print(today)*/
-        
         
         newEntity.setValue(purchaseName, forKey: "nameOfPurchase")
         newEntity.setValue(GetTodaysDate(), forKey: "dateOfPurchase")
@@ -115,15 +132,30 @@ class AddExpenseViewController: UIViewController {
         }
     }
     
+    func DeleteLastExpense() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: currentEntityName)
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            var result = try context.fetch(request)
+            context.delete(result.popLast() as! NSManagedObject)
+            try context.save()
+        } catch {
+            print("COULDN'T DELETE")
+        }
+    }
+    
     func GetData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ExpensesDatabaseEntity")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: currentEntityName)
         request.returnsObjectsAsFaults = false
         
         do {
             let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
+            for data in (result as! [NSManagedObject]) {
                 //name = data.value(forKey: "nameOfPurchase") as! String
                 name = data.value(forKey: "nameOfPurchase") as? String ?? "NO STORE PROVIDED"
                 date = data.value(forKey: "dateOfPurchase") as? String ?? "NO DATE PROVIDED"
@@ -133,9 +165,6 @@ class AddExpenseViewController: UIViewController {
                 print(amount)
                 print("")
             }
-            /*print(name)
-            print(date)
-            print(amount)*/
         } catch {
             print("FAILED")
         }
@@ -147,6 +176,39 @@ class AddExpenseViewController: UIViewController {
         let today : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
         print(today)
         return today
+    }
+    
+    func GetCurrentMonthAndYear() -> String {
+        let formatter : DateFormatter = DateFormatter()
+        formatter.dateFormat = "M/yyyy"
+        let todayMonthYear : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
+        return todayMonthYear
+    }
+    
+    @IBAction func tryToDeleteStuff(_ sender: Any) {
+        DeleteLastExpense()
+    }
+    
+    func DeleteAllDataInMonthEntity() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: currentEntityName)
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try context.fetch(request)
+            print((result as! [NSManagedObject]).count)
+            for data in (result as! [NSManagedObject]).reversed()  {
+                context.delete(data)
+                try context.save()
+                print(result.count)
+            }
+        } catch {
+            print("COULDN'T DELETE")
+        }
+        
+        
+        print("THAT NUMBER ABOVE SHOULD BE ZERO")
     }
     
     

@@ -15,6 +15,8 @@ class ViewController: UIViewController {
         return .lightContent
     }
     
+    var currentEntityName = "DeleteTestingEntity"
+    
     @IBOutlet weak var RecentStoreLabel: UILabel!
     
     @IBOutlet weak var MonthlyAverage: UIButton!
@@ -58,13 +60,16 @@ class ViewController: UIViewController {
         ExpenseSummary.layer.cornerRadius = 20
         ExpenseSummary.clipsToBounds = true
         
+        
+        SetupMonthCostSaving()
         GetFrontPageData()
+        //DeleteAllDataInMonthEntity()
     }
     
     func GetFrontPageData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ExpensesDatabaseEntity")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: currentEntityName)
         request.returnsObjectsAsFaults = false
         
         var LastExpenseAmount = 0.00
@@ -79,7 +84,7 @@ class ViewController: UIViewController {
             for data in result as! [NSManagedObject] {
                 LastExpenseStore = data.value(forKey: "nameOfPurchase") as? String ?? "NO STORE"
                 LastExpenseAmount = data.value(forKey: "purchaseAmount") as? Double ?? 0.00
-                LastExpenseDate = data.value(forKey: "dateOfPurchase") as? String ?? "NO DATE"
+                LastExpenseDate = data.value(forKey: "dateOfPurchase") as? String ?? "NO DATE PROVIDED"
                 let curFormattedDate = FormatDate(dateToFormat: LastExpenseDate)
                 
                 if(GetCurrentMonthAndYear().compare(curFormattedDate).rawValue == 0) {
@@ -91,18 +96,97 @@ class ViewController: UIViewController {
                 }
             }
             
-            let FormattedRecentExpense = String(format: "%.2f", LastExpenseAmount)
-            RecentExpenseLabel.text = "$" + "\(FormattedRecentExpense)"
-            let FormattedMonthlyExpense = String(format: "%.2f", MonthlyTotalExpense)
-            MonthlyTotalLabel.text = "$" + "\(FormattedMonthlyExpense)"
-            let FormattedWeeklyExpense = String(format: "%.2f", WeeklyTotalExpense)
-            WeeklyTotalLabel.text = "$" + "\(FormattedWeeklyExpense)"
+            SetFormattedFrontPageLabels(LastExpenseAmount: LastExpenseAmount, MonthlyTotalExpense: MonthlyTotalExpense, WeeklyTotalExpense: WeeklyTotalExpense, LastExpenseStore: LastExpenseStore)
             
-            RecentStoreLabel.text = LastExpenseStore
+            AddMonthTotalToDataset(monthlyTotal: MonthlyTotalExpense)
             
         } catch {
             print("FAILED")
         }
+    }
+    
+    func AddMonthTotalToDataset(monthlyTotal: Double) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "MonthlyGraphTestEntity")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            var result = try context.fetch(request)
+            context.delete(result.popLast() as! NSManagedObject)
+            try context.save()
+            
+            
+            let entity = NSEntityDescription.entity(forEntityName: "MonthlyGraphTestEntity", in: context)
+            let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+            
+            newEntity.setValue(monthlyTotal, forKey: "monthlyTotal")
+            newEntity.setValue(GetCurrentMonthAndYear(), forKey: "month")
+            
+            try context.save()
+            result = try context.fetch(request)
+            
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "monthlyTotal") as! Double)
+            }
+        } catch {
+            print("COULDN'T DELETE")
+        }
+    }
+    
+    func SetupMonthCostSaving() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "MonthlyGraphTestEntity")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try context.fetch(request)
+            print(result.count)
+            if ((result as! [NSManagedObject]).count == 0 || (result.last as! NSManagedObject).value(forKey: "month") as! String != GetCurrentMonthAndYear()) {
+                let entity = NSEntityDescription.entity(forEntityName: "MonthlyGraphTestEntity", in: context)
+                let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+                newEntity.setValue(0, forKey: "monthlyTotal")
+                newEntity.setValue(GetCurrentMonthAndYear(), forKey: "month")
+            }
+            
+            try context.save()
+        } catch {
+            print("ERROR")
+        }
+    }
+    
+    func DeleteAllDataInMonthEntity() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "MonthlyGraphTestEntity")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try context.fetch(request)
+            print((result as! [NSManagedObject]).count)
+            for data in (result as! [NSManagedObject]).reversed()  {
+                context.delete(data)
+                try context.save()
+                print(result.count)
+            }
+        } catch {
+            print("COULDN'T DELETE")
+        }
+        
+        
+        print("THAT NUMBER ABOVE SHOULD BE ZERO")
+    }
+    
+    func SetFormattedFrontPageLabels(LastExpenseAmount: Double, MonthlyTotalExpense: Double, WeeklyTotalExpense: Double, LastExpenseStore: String) {
+        
+        let FormattedRecentExpense = String(format: "%.2f", LastExpenseAmount)
+        RecentExpenseLabel.text = "$" + "\(FormattedRecentExpense)"
+        let FormattedMonthlyExpense = String(format: "%.2f", MonthlyTotalExpense)
+        MonthlyTotalLabel.text = "$" + "\(FormattedMonthlyExpense)"
+        let FormattedWeeklyExpense = String(format: "%.2f", WeeklyTotalExpense)
+        WeeklyTotalLabel.text = "$" + "\(FormattedWeeklyExpense)"
+        RecentStoreLabel.text = LastExpenseStore
     }
     
     func FormatDate(dateToFormat: String) -> String {
@@ -119,14 +203,6 @@ class ViewController: UIViewController {
             }
         }
         return newDateFormat
-        /*let isoDate = dateToFormat
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "M/yyyy"
-        let newDate = dateFormatter.date(from:isoDate)!
-        let newDateAsString = "\(newDate)"
-        print(newDateAsString)
-        return newDateAsString*/
     }
     
     func GetCurrentMonthAndYear() -> String {
@@ -152,7 +228,6 @@ class ViewController: UIViewController {
     func isInSameWeek(as date: Date) -> Bool {
         return isEqual(to: date, toGranularity: .weekOfYear)
     }
-
 
 }
 

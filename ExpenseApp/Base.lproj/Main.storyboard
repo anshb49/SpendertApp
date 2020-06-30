@@ -213,6 +213,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOi-E0-QRc">
+                                <rect key="frame" x="136" y="560" width="140" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete Last Expense"/>
+                                <connections>
+                                    <action selector="tryToDeleteStuff:" destination="Quh-9D-iJj" eventType="touchUpInside" id="yE4-Mx-tpW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1137265339" green="0.11372355369999999" blue="0.1137255952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="66W-lU-HKc"/>
@@ -221,6 +229,7 @@
                         <outlet property="AmountIInput" destination="lHA-If-2Yr" id="qoF-mu-rIh"/>
                         <outlet property="ConfirmAdd" destination="x4X-8C-wBA" id="Xi0-qH-0Ld"/>
                         <outlet property="DateInput" destination="WaN-d7-nya" id="ehl-L3-9p7"/>
+                        <outlet property="DeleteLastExpenseTestButton" destination="fOi-E0-QRc" id="pZY-g7-75r"/>
                         <outlet property="LeavePage" destination="8FK-Dh-RQV" id="d4x-1p-6nS"/>
                         <outlet property="NameInput" destination="u1J-bZ-4zg" id="miC-Z5-BSY"/>
                     </connections>
@@ -246,6 +255,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="D3r-5i-NgM"/>
+        <segue reference="995-fL-358"/>
     </inferredMetricsTieBreakers>
 </document>

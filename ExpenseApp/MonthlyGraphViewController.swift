@@ -9,11 +9,14 @@
 import UIKit
 import Charts
 import TinyConstraints
+import CoreData
 
 
 
 class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
 
+    let MonthsOnGraph = 6
+    
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
         chartView.backgroundColor = .systemGray
@@ -70,6 +73,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         barChartView.center = view.center
         
         setData()
+        //LoadData()
         
     }
     
@@ -78,8 +82,8 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
     }
     
     func setData() {
-        let set1 = BarChartDataSet(entries: monthlyExpenseValues, label: "Monthly Expenses")
-        set1.colors = ChartColorTemplates.colorful()
+        let set1 = BarChartDataSet(entries: LoadData(), label: "Monthly Expenses")
+        set1.colors = ChartColorTemplates.joyful()
         let data = BarChartData(dataSet:set1)
         barChartView.data = data
         
@@ -101,6 +105,86 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         
         
     }*/
+    
+    func LoadData() -> [BarChartDataEntry] {
+        var monthlyExpenseVals = [BarChartDataEntry]()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "MonthlyGraphTestEntity")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try context.fetch(request)
+            
+            let dataArray = result as! [NSManagedObject]
+            var loopCounter = 0
+            for data in dataArray.reversed() {
+                if (loopCounter == MonthsOnGraph) {
+                    break
+                }
+                
+                let dataMonth = GetDateMonth(date: data.value(forKey: "month") as! String)
+                var xPos = 0
+                if (Int(dataMonth)! < MonthsOnGraph) {
+                    xPos = 12 + Int(dataMonth)!
+                } else {
+                    xPos = Int(dataMonth)!
+                }
+                
+                let yPos = data.value(forKey: "monthlyTotal") as! Double
+                monthlyExpenseVals.append(BarChartDataEntry(x: Double(xPos), y: yPos))
+                
+                loopCounter += 1
+            }
+            
+            
+        } catch {
+            print("FAILED")
+        }
+        
+        return monthlyExpenseVals
+    }
+    
+    func GetDateMonth(date: String) -> String {
+        var month = ""
+        var foundSlash = false
+        for char in date {
+            if (char == "/") {
+                foundSlash = true
+                continue
+            }
+            
+            if (!foundSlash) {
+                month += "\(char)"
+            }
+        }
+        return month
+    }
+    
+    func GetDateYear(date:String) -> String {
+        var year = ""
+        var foundSlash = false
+        for char in date {
+            if (char == "/") {
+                foundSlash = true
+                continue
+            }
+            
+            if (foundSlash) {
+                year += "\(char)"
+            }
+        }
+        return year
+    }
+    
+    func GetCurrentYear() -> String {
+        let formatter : DateFormatter = DateFormatter()
+        formatter.dateFormat = "yyyy"
+        let todayYear : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
+        return todayYear
+    }
+    
+    
     
     let yValues: [ChartDataEntry] = [
         ChartDataEntry(x: 0.0, y: 10.0),
@@ -125,6 +209,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         /*BarChartDataEntry(x: 6, y: 241.71),
         BarChartDataEntry(x: 18, y: 234.27)*/
         
+        BarChartDataEntry(x: -1.0, y: 8.0),
         BarChartDataEntry(x: 0.0, y: 0.0),
         BarChartDataEntry(x: 1.0, y: 1.0),
         BarChartDataEntry(x: 2.0, y: 2.0),
