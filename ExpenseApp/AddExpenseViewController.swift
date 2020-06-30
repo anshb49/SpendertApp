@@ -80,15 +80,7 @@ class AddExpenseViewController: UIViewController {
         
         SaveData(purchaseName: LatestExpense.name, dateOfPurchase: LatestExpense.date, purchaseAmount: LatestExpense.amount)
         GetData()
-        /*print(LatestExpense.name)
-        print(LatestExpense.date)
-        print(LatestExpense.time)
-        print(LatestExpense.amount)*/
         
-        
-        //TotalExpenses.append(LatestExpense)
-        
-        //print(TotalExpenses.count)
     }
     
     @IBAction func ResetInputs(_ sender: Any) {
@@ -105,14 +97,14 @@ class AddExpenseViewController: UIViewController {
         
         print(purchaseName)
         
-        let formatter : DateFormatter = DateFormatter()
+        /*let formatter : DateFormatter = DateFormatter()
         formatter.dateFormat = "M/d/yyyy"
         let today : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
-        print(today)
+        print(today)*/
         
         
         newEntity.setValue(purchaseName, forKey: "nameOfPurchase")
-        newEntity.setValue(today, forKey: "dateOfPurchase")
+        newEntity.setValue(GetTodaysDate(), forKey: "dateOfPurchase")
         newEntity.setValue(purchaseAmount, forKey: "purchaseAmount")
         
         do {
@@ -147,6 +139,14 @@ class AddExpenseViewController: UIViewController {
         } catch {
             print("FAILED")
         }
+    }
+    
+    func GetTodaysDate() -> String {
+        let formatter : DateFormatter = DateFormatter()
+        formatter.dateFormat = "M/d/yyyy"
+        let today : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
+        print(today)
+        return today
     }
     
     

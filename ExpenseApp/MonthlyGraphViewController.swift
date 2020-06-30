@@ -47,7 +47,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         barView.xAxis.setLabelCount(12, force: false)
         barView.rightAxis.enabled = false
         barView.leftAxis.enabled = false
-        //barView.animate(yAxisDuration: 1.25)
+        barView.animate(yAxisDuration: 1.25)
         return barView
     }()
     
@@ -122,10 +122,10 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
     ]
     
     let monthlyExpenseValues: [BarChartDataEntry] = [
-        BarChartDataEntry(x: 6, y: 241.71),
-        BarChartDataEntry(x: 18, y: 234.27)
+        /*BarChartDataEntry(x: 6, y: 241.71),
+        BarChartDataEntry(x: 18, y: 234.27)*/
         
-        /*BarChartDataEntry(x: 0.0, y: 0.0),
+        BarChartDataEntry(x: 0.0, y: 0.0),
         BarChartDataEntry(x: 1.0, y: 1.0),
         BarChartDataEntry(x: 2.0, y: 2.0),
         BarChartDataEntry(x: 3.0, y: 3.0),
@@ -134,7 +134,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         BarChartDataEntry(x: 6.0, y: 6.0),
         BarChartDataEntry(x: 7.0, y: 7.0),
         BarChartDataEntry(x: 8.0, y: 8.0),
-        BarChartDataEntry(x: 9.0, y: 9.0)*/
+        BarChartDataEntry(x: 9.0, y: 9.0)
     ]
     
     

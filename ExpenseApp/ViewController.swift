@@ -119,6 +119,14 @@ class ViewController: UIViewController {
             }
         }
         return newDateFormat
+        /*let isoDate = dateToFormat
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "M/yyyy"
+        let newDate = dateFormatter.date(from:isoDate)!
+        let newDateAsString = "\(newDate)"
+        print(newDateAsString)
+        return newDateAsString*/
     }
     
     func GetCurrentMonthAndYear() -> String {
