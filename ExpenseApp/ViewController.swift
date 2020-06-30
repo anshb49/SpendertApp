@@ -61,9 +61,10 @@ class ViewController: UIViewController {
         ExpenseSummary.clipsToBounds = true
         
         
+        //DeleteAllDataInMonthEntity()
         SetupMonthCostSaving()
         GetFrontPageData()
-        //DeleteAllDataInMonthEntity()
+        
     }
     
     func GetFrontPageData() {
@@ -126,9 +127,9 @@ class ViewController: UIViewController {
             try context.save()
             result = try context.fetch(request)
             
-            for data in result as! [NSManagedObject] {
+            /*for data in result as! [NSManagedObject] {
                 print(data.value(forKey: "monthlyTotal") as! Double)
-            }
+            }*/
         } catch {
             print("COULDN'T DELETE")
         }
@@ -155,6 +156,8 @@ class ViewController: UIViewController {
             print("ERROR")
         }
     }
+    
+    
     
     func DeleteAllDataInMonthEntity() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

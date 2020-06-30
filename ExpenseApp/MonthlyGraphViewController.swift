@@ -15,7 +15,7 @@ import CoreData
 
 class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
 
-    let MonthsOnGraph = 6
+    let MonthsOnGraph = 12
     
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
@@ -125,7 +125,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
                 
                 let dataMonth = GetDateMonth(date: data.value(forKey: "month") as! String)
                 var xPos = 0
-                if (Int(dataMonth)! < MonthsOnGraph) {
+                if (Int(dataMonth)! < MonthsOnGraph && Int(dataMonth)! <= Int(GetCurrentMonth())!) {
                     xPos = 12 + Int(dataMonth)!
                 } else {
                     xPos = Int(dataMonth)!
@@ -184,6 +184,13 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         return todayYear
     }
     
+    func GetCurrentMonth() -> String {
+        let formatter : DateFormatter = DateFormatter()
+        formatter.dateFormat = "M"
+        let todayMonth : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
+        return todayMonth
+    }
+    
     
     
     let yValues: [ChartDataEntry] = [
@@ -215,11 +222,11 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         BarChartDataEntry(x: 2.0, y: 2.0),
         BarChartDataEntry(x: 3.0, y: 3.0),
         BarChartDataEntry(x: 4.0, y: 4.0),
-        BarChartDataEntry(x: 5.0, y: 5.0),
+        /*BarChartDataEntry(x: 5.0, y: 5.0),
         BarChartDataEntry(x: 6.0, y: 6.0),
         BarChartDataEntry(x: 7.0, y: 7.0),
         BarChartDataEntry(x: 8.0, y: 8.0),
-        BarChartDataEntry(x: 9.0, y: 9.0)
+        BarChartDataEntry(x: 9.0, y: 9.0)*/
     ]
     
     
