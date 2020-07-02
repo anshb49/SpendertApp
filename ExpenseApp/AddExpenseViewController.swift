@@ -23,7 +23,8 @@ class AddExpenseViewController: UIViewController {
     var name = String()
     var date = String()
     var amount = Double()
-    var currentEntityName = "DeleteTestingEntity"
+    let currentEntityName = "DeleteTestingEntity"
+    let monthDataEntityName = "MonthlyGraphTestEntity"
     
     @IBOutlet weak var NameInput: UITextField!
     
@@ -96,7 +97,7 @@ class AddExpenseViewController: UIViewController {
     func GetMonthlyTotal() -> Double {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "MonthlyGraphTestEntity")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: monthDataEntityName)
         request.returnsObjectsAsFaults = false
         
         do {
@@ -123,12 +124,133 @@ class AddExpenseViewController: UIViewController {
         newEntity.setValue(purchaseName, forKey: "nameOfPurchase")
         newEntity.setValue(GetTodaysDate(), forKey: "dateOfPurchase")
         newEntity.setValue(purchaseAmount, forKey: "purchaseAmount")
-        
+        AddLatestExpenseToMonthlyTotal(purchaseAmount: purchaseAmount)
+        AddLatestExpenseToWeeklyTotal(purchaseAmount: purchaseAmount)
         do {
             try context.save()
             print("SAVED")
         } catch {
             print("ERROR SAVING")
+        }
+    }
+    
+    func AddLatestExpenseToWeeklyTotal(purchaseAmount: Double) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WeeklyGraphTestEntity")
+        request.returnsObjectsAsFaults = false
+        var weeklyTotal = 0.0
+        do {
+            var result = try context.fetch(request)
+            let currentWeeklyTotal = result.popLast() as! NSManagedObject
+            weeklyTotal = currentWeeklyTotal.value(forKey: "weeklyTotal") as! Double
+            //context.delete(result.popLast() as! NSManagedObject)
+            context.delete(currentWeeklyTotal)
+            try context.save()
+            
+            
+            let entity = NSEntityDescription.entity(forEntityName: "WeeklyGraphTestEntity", in: context)
+            let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+            
+            newEntity.setValue(weeklyTotal + purchaseAmount, forKey: "weeklyTotal")
+            newEntity.setValue(GetTodaysDate(), forKey: "week")
+            
+            try context.save()
+            result = try context.fetch(request)
+            
+            /*for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "monthlyTotal") as! Double)
+            }*/
+        } catch {
+            print("COULDN'T DELETE")
+        }
+    }
+    
+    func DeleteLatestExpenseFromWeeklyTotal(purchaseAmount: Double) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WeeklyGraphTestEntity")
+        request.returnsObjectsAsFaults = false
+        var weeklyTotal = 0.0
+        do {
+            var result = try context.fetch(request)
+            let currentWeeklyTotal = result.popLast() as! NSManagedObject
+            weeklyTotal = currentWeeklyTotal.value(forKey: "weeklyTotal") as! Double
+            context.delete(currentWeeklyTotal)
+            try context.save()
+            
+            
+            let entity = NSEntityDescription.entity(forEntityName: "WeeklyGraphTestEntity", in: context)
+            let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+            
+            newEntity.setValue(weeklyTotal - purchaseAmount, forKey: "weeklyTotal")
+            newEntity.setValue(GetTodaysDate(), forKey: "week")
+            
+            try context.save()
+            result = try context.fetch(request)
+            
+        } catch {
+            print("COULDN'T DELETE")
+        }
+    }
+    
+    func AddLatestExpenseToMonthlyTotal(purchaseAmount: Double) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: monthDataEntityName)
+        request.returnsObjectsAsFaults = false
+        var monthlyTotal = 0.0
+        do {
+            var result = try context.fetch(request)
+            let currentMonthlyTotal = result.popLast() as! NSManagedObject
+            monthlyTotal = currentMonthlyTotal.value(forKey: "monthlyTotal") as! Double
+            //context.delete(result.popLast() as! NSManagedObject)
+            context.delete(currentMonthlyTotal)
+            try context.save()
+            
+            
+            let entity = NSEntityDescription.entity(forEntityName: monthDataEntityName, in: context)
+            let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+            
+            newEntity.setValue(monthlyTotal + purchaseAmount, forKey: "monthlyTotal")
+            newEntity.setValue(GetCurrentMonthAndYear(), forKey: "month")
+            
+            try context.save()
+            result = try context.fetch(request)
+            
+            /*for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "monthlyTotal") as! Double)
+            }*/
+        } catch {
+            print("COULDN'T DELETE")
+        }
+    }
+    
+    func DeleteLatestExpenseFromMonthlyTotal(purchaseAmount: Double) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: monthDataEntityName)
+        request.returnsObjectsAsFaults = false
+        var monthlyTotal = 0.0
+        do {
+            var result = try context.fetch(request)
+            let currentMonthlyTotal = result.popLast() as! NSManagedObject
+            monthlyTotal = currentMonthlyTotal.value(forKey: "monthlyTotal") as! Double
+            context.delete(currentMonthlyTotal)
+            try context.save()
+            
+            
+            let entity = NSEntityDescription.entity(forEntityName: monthDataEntityName, in: context)
+            let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+            
+            newEntity.setValue(monthlyTotal - purchaseAmount, forKey: "monthlyTotal")
+            newEntity.setValue(GetCurrentMonthAndYear(), forKey: "month")
+            
+            try context.save()
+            result = try context.fetch(request)
+            
+        } catch {
+            print("COULDN'T DELETE")
         }
     }
     
@@ -140,7 +262,10 @@ class AddExpenseViewController: UIViewController {
         
         do {
             var result = try context.fetch(request)
+            let lastPurchaseAmount = (result.last as! NSManagedObject).value(forKey: "purchaseAmount") as! Double
             context.delete(result.popLast() as! NSManagedObject)
+            DeleteLatestExpenseFromMonthlyTotal(purchaseAmount: lastPurchaseAmount)
+            DeleteLatestExpenseFromWeeklyTotal(purchaseAmount: lastPurchaseAmount)
             try context.save()
         } catch {
             print("COULDN'T DELETE")

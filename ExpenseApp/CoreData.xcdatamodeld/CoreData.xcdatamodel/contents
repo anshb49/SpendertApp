@@ -19,10 +19,15 @@
         <attribute name="month" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="monthlyTotal" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
     </entity>
+    <entity name="WeeklyGraphTestEntity" representedClassName="WeeklyGraphTestEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="week" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="weeklyTotal" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+    </entity>
     <elements>
+        <element name="DeleteTestingEntity" positionX="-63" positionY="36" width="128" height="88"/>
         <element name="ExpensesDatabaseEntity" positionX="-63" positionY="18" width="128" height="88"/>
         <element name="LatestTestEntity" positionX="-63" positionY="9" width="128" height="88"/>
-        <element name="DeleteTestingEntity" positionX="-63" positionY="36" width="128" height="88"/>
         <element name="MonthlyGraphTestEntity" positionX="-54" positionY="54" width="128" height="73"/>
+        <element name="WeeklyGraphTestEntity" positionX="-54" positionY="45" width="128" height="73"/>
     </elements>
 </model>
