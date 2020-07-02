@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     
     let currentEntityName = "DeleteTestingEntity"
     let monthDataEntityName = "MonthlyGraphTestEntity"
+    let weekDataEntityName = "WeeklyGraphTestEntity"
     
     @IBOutlet weak var RecentStoreLabel: UILabel!
     
@@ -76,16 +77,16 @@ class ViewController: UIViewController {
         
         do {
             let result = try context.fetch(request)
-            RecentStoreLabel.text = ((result.last as! NSManagedObject).value(forKey: "nameOfPurchase") as! String)
-            RecentExpenseLabel.text = "$" + "\((result.last as! NSManagedObject).value(forKey: "purchaseAmount") as! Double)"
-            SetMonthlyTotalLabel()
-            SetWeeklyTotalLabel()
+            if ((result as! [NSManagedObject]).count > 0) {
+                RecentStoreLabel.text = ((result.last as! NSManagedObject).value(forKey: "nameOfPurchase") as! String)
+                RecentExpenseLabel.text = "$" + "\((result.last as! NSManagedObject).value(forKey: "purchaseAmount") as! Double)"
+                SetMonthlyTotalLabel()
+                SetWeeklyTotalLabel()
+            }
         } catch {
             print("COULDN'T LOAD FRONT PAGE DATA")
         }
     }
-    
-    
     
     func SetupMonthCostSaving() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -112,7 +113,7 @@ class ViewController: UIViewController {
     func SetupWeekCostSaving() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WeeklyGraphTestEntity")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: weekDataEntityName)
         request.returnsObjectsAsFaults = false
             
         do {
@@ -121,7 +122,7 @@ class ViewController: UIViewController {
             
             
             if ((result as! [NSManagedObject]).count == 0 || !(isInSameWeek(as: ConvertStringToDate(date: ((result.last as! NSManagedObject).value(forKey: "week") as! String))))) {
-                let entity = NSEntityDescription.entity(forEntityName: "WeeklyGraphTestEntity", in: context)
+                let entity = NSEntityDescription.entity(forEntityName: weekDataEntityName, in: context)
                 let newEntity = NSManagedObject(entity: entity!, insertInto: context)
                 newEntity.setValue(0, forKey: "weeklyTotal")
                 newEntity.setValue(GetCurrentDate(), forKey: "week")
@@ -224,7 +225,7 @@ class ViewController: UIViewController {
     func SetWeeklyTotalLabel() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WeeklyGraphTestEntity")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: weekDataEntityName)
         request.returnsObjectsAsFaults = false
         
         do {

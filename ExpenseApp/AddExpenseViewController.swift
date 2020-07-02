@@ -25,6 +25,9 @@ class AddExpenseViewController: UIViewController {
     var amount = Double()
     let currentEntityName = "DeleteTestingEntity"
     let monthDataEntityName = "MonthlyGraphTestEntity"
+    let weekDataEntityName = "WeeklyGraphTestEntity"
+    
+    
     
     @IBOutlet weak var NameInput: UITextField!
     
@@ -137,7 +140,7 @@ class AddExpenseViewController: UIViewController {
     func AddLatestExpenseToWeeklyTotal(purchaseAmount: Double) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WeeklyGraphTestEntity")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: weekDataEntityName)
         request.returnsObjectsAsFaults = false
         var weeklyTotal = 0.0
         do {
@@ -149,7 +152,7 @@ class AddExpenseViewController: UIViewController {
             try context.save()
             
             
-            let entity = NSEntityDescription.entity(forEntityName: "WeeklyGraphTestEntity", in: context)
+            let entity = NSEntityDescription.entity(forEntityName: weekDataEntityName, in: context)
             let newEntity = NSManagedObject(entity: entity!, insertInto: context)
             
             newEntity.setValue(weeklyTotal + purchaseAmount, forKey: "weeklyTotal")
@@ -169,7 +172,7 @@ class AddExpenseViewController: UIViewController {
     func DeleteLatestExpenseFromWeeklyTotal(purchaseAmount: Double) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WeeklyGraphTestEntity")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: weekDataEntityName)
         request.returnsObjectsAsFaults = false
         var weeklyTotal = 0.0
         do {
@@ -180,7 +183,7 @@ class AddExpenseViewController: UIViewController {
             try context.save()
             
             
-            let entity = NSEntityDescription.entity(forEntityName: "WeeklyGraphTestEntity", in: context)
+            let entity = NSEntityDescription.entity(forEntityName: weekDataEntityName, in: context)
             let newEntity = NSManagedObject(entity: entity!, insertInto: context)
             
             newEntity.setValue(weeklyTotal - purchaseAmount, forKey: "weeklyTotal")
