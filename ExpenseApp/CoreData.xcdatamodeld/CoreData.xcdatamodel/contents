@@ -10,11 +10,6 @@
         <attribute name="nameOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="purchaseAmount" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
     </entity>
-    <entity name="LatestTestEntity" representedClassName="LatestTestEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="dateOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
-        <attribute name="nameOfPurchase" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
-        <attribute name="purchaseAmount" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
-    </entity>
     <entity name="MonthlyGraphTestEntity" representedClassName="MonthlyGraphTestEntity" syncable="YES" codeGenerationType="class">
         <attribute name="month" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="monthlyTotal" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
@@ -26,7 +21,6 @@
     <elements>
         <element name="DeleteTestingEntity" positionX="-63" positionY="36" width="128" height="88"/>
         <element name="ExpensesDatabaseEntity" positionX="-63" positionY="18" width="128" height="88"/>
-        <element name="LatestTestEntity" positionX="-63" positionY="9" width="128" height="88"/>
         <element name="MonthlyGraphTestEntity" positionX="-54" positionY="54" width="128" height="73"/>
         <element name="WeeklyGraphTestEntity" positionX="-54" positionY="45" width="128" height="73"/>
     </elements>
