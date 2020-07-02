@@ -22,15 +22,17 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
     
     lazy var barChartView: BarChartView = {
         let barView = BarChartView()
-        barView.backgroundColor = .systemGray
+        barView.backgroundColor = UIColor(red: (33/255.0), green: (33/255.0), blue: (33/255.0), alpha: 1.0)
         barView.xAxis.labelPosition = .bottom
         barView.xAxis.valueFormatter = IndexAxisValueFormatter(values: ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov"])
+        barView.xAxis.labelHeight = 100
+        barView.xAxis.labelWidth = 20
         barView.xAxis.granularity = 1
         barView.xAxis.setLabelCount(12, force: false)
         barView.rightAxis.enabled = false
         barView.leftAxis.enabled = false
         barView.xAxis.labelTextColor = .white
-        barView.animate(yAxisDuration: 1.25)
+        barView.animate(yAxisDuration: 1.20)
         return barView
     }()
     
@@ -62,9 +64,10 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
     }
     
     func setData() {
-        let set1 = BarChartDataSet(entries: LoadData(), label: "Monthly Expenses")
+        let set1 = BarChartDataSet(entries: LoadData(), label:"")
         set1.colors = ChartColorTemplates.material()
-        set1.barShadowColor = .black
+        set1.valueTextColor = .white
+        set1.barShadowColor = .white
         let data = BarChartData(dataSet:set1)
         barChartView.data = data
         
