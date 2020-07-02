@@ -125,7 +125,7 @@ class AddExpenseViewController: UIViewController {
         print(purchaseName)
         
         newEntity.setValue(purchaseName, forKey: "nameOfPurchase")
-        newEntity.setValue(GetTodaysDate(), forKey: "dateOfPurchase")
+        newEntity.setValue(DateFunctions.GetTodaysDate(), forKey: "dateOfPurchase")
         newEntity.setValue(purchaseAmount, forKey: "purchaseAmount")
         AddLatestExpenseToMonthlyTotal(purchaseAmount: purchaseAmount)
         AddLatestExpenseToWeeklyTotal(purchaseAmount: purchaseAmount)
@@ -156,7 +156,7 @@ class AddExpenseViewController: UIViewController {
             let newEntity = NSManagedObject(entity: entity!, insertInto: context)
             
             newEntity.setValue(weeklyTotal + purchaseAmount, forKey: "weeklyTotal")
-            newEntity.setValue(GetTodaysDate(), forKey: "week")
+            newEntity.setValue(DateFunctions.GetTodaysDate(), forKey: "week")
             
             try context.save()
             result = try context.fetch(request)
@@ -187,7 +187,7 @@ class AddExpenseViewController: UIViewController {
             let newEntity = NSManagedObject(entity: entity!, insertInto: context)
             
             newEntity.setValue(weeklyTotal - purchaseAmount, forKey: "weeklyTotal")
-            newEntity.setValue(GetTodaysDate(), forKey: "week")
+            newEntity.setValue(DateFunctions.GetTodaysDate(), forKey: "week")
             
             try context.save()
             result = try context.fetch(request)
@@ -216,7 +216,7 @@ class AddExpenseViewController: UIViewController {
             let newEntity = NSManagedObject(entity: entity!, insertInto: context)
             
             newEntity.setValue(monthlyTotal + purchaseAmount, forKey: "monthlyTotal")
-            newEntity.setValue(GetCurrentMonthAndYear(), forKey: "month")
+            newEntity.setValue(DateFunctions.GetCurrentMonthAndYear(), forKey: "month")
             
             try context.save()
             result = try context.fetch(request)
@@ -234,6 +234,7 @@ class AddExpenseViewController: UIViewController {
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: monthDataEntityName)
         request.returnsObjectsAsFaults = false
+        
         var monthlyTotal = 0.0
         do {
             var result = try context.fetch(request)
@@ -247,7 +248,7 @@ class AddExpenseViewController: UIViewController {
             let newEntity = NSManagedObject(entity: entity!, insertInto: context)
             
             newEntity.setValue(monthlyTotal - purchaseAmount, forKey: "monthlyTotal")
-            newEntity.setValue(GetCurrentMonthAndYear(), forKey: "month")
+            newEntity.setValue(DateFunctions.GetCurrentMonthAndYear(), forKey: "month")
             
             try context.save()
             result = try context.fetch(request)
@@ -296,21 +297,6 @@ class AddExpenseViewController: UIViewController {
         } catch {
             print("FAILED")
         }
-    }
-    
-    func GetTodaysDate() -> String {
-        let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "M/d/yyyy"
-        let today : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
-        print(today)
-        return today
-    }
-    
-    func GetCurrentMonthAndYear() -> String {
-        let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "M/yyyy"
-        let todayMonthYear : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
-        return todayMonthYear
     }
     
     @IBAction func tryToDeleteStuff(_ sender: Any) {

@@ -87,9 +87,9 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
                     break
                 }
                 
-                let dataMonth = GetDateMonth(date: data.value(forKey: "month") as! String)
+                let dataMonth = DateFunctions.GetDateMonth(date: data.value(forKey: "month") as! String)
                 var xPos = 0
-                if (Int(dataMonth)! < MonthsOnGraph && Int(dataMonth)! <= Int(GetCurrentMonth())!) {
+                if (Int(dataMonth)! < MonthsOnGraph && Int(dataMonth)! <= Int(DateFunctions.GetCurrentMonth())!) {
                     xPos = 12 + Int(dataMonth)!
                 } else {
                     xPos = Int(dataMonth)!
@@ -109,43 +109,6 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         return monthlyExpenseVals
     }
     
-    func GetDateMonth(date: String) -> String {
-        let isoDate = date
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "M/yyyy"
-        let newDate = dateFormatter.date(from:isoDate)!
-        
-        let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "M"
-        let newMonth : String = formatter.string(from: newDate)
-        return newMonth
-    }
-    
-    func GetDateYear(date:String) -> String {
-        
-        let isoDate = date
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy"
-        let newDate = dateFormatter.date(from:isoDate)!
-        let newYear = "\(newDate)"
-        return newYear
-    }
-    
-    func GetCurrentYear() -> String {
-        let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "yyyy"
-        let todayYear : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
-        return todayYear
-    }
-    
-    func GetCurrentMonth() -> String {
-        let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "M"
-        let todayMonth : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
-        return todayMonth
-    }
     
     let monthlyExpenseValues: [BarChartDataEntry] = [
         /*BarChartDataEntry(x: 6, y: 241.71),

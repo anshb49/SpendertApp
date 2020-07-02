@@ -97,11 +97,11 @@ class ViewController: UIViewController {
         do {
             let result = try context.fetch(request)
             //print(result.count)
-            if ((result as! [NSManagedObject]).count == 0 || (result.last as! NSManagedObject).value(forKey: "month") as! String != GetCurrentMonthAndYear()) {
+            if ((result as! [NSManagedObject]).count == 0 || (result.last as! NSManagedObject).value(forKey: "month") as! String != DateFunctions.GetCurrentMonthAndYear()) {
                 let entity = NSEntityDescription.entity(forEntityName: monthDataEntityName, in: context)
                 let newEntity = NSManagedObject(entity: entity!, insertInto: context)
                 newEntity.setValue(0, forKey: "monthlyTotal")
-                newEntity.setValue(GetCurrentMonthAndYear(), forKey: "month")
+                newEntity.setValue(DateFunctions.GetCurrentMonthAndYear(), forKey: "month")
             }
             
             try context.save()
@@ -121,84 +121,17 @@ class ViewController: UIViewController {
             print(result.count)
             
             
-            if ((result as! [NSManagedObject]).count == 0 || !(isInSameWeek(as: ConvertStringToDate(date: ((result.last as! NSManagedObject).value(forKey: "week") as! String))))) {
+            if ((result as! [NSManagedObject]).count == 0 || !(DateFunctions.isInSameWeek(as: DateFunctions.ConvertStringToDate(date: ((result.last as! NSManagedObject).value(forKey: "week") as! String))))) {
                 let entity = NSEntityDescription.entity(forEntityName: weekDataEntityName, in: context)
                 let newEntity = NSManagedObject(entity: entity!, insertInto: context)
                 newEntity.setValue(0, forKey: "weeklyTotal")
-                newEntity.setValue(GetCurrentDate(), forKey: "week")
+                newEntity.setValue(DateFunctions.GetTodaysDate(), forKey: "week")
             }
             
             try context.save()
         } catch {
             print("ERROR")
         }
-    }
-    
-    
-    func DeleteAllDataInMonthEntity() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: monthDataEntityName)
-        request.returnsObjectsAsFaults = false
-        
-        do {
-            let result = try context.fetch(request)
-            print((result as! [NSManagedObject]).count)
-            for data in (result as! [NSManagedObject]).reversed() {
-                context.delete(data)
-                try context.save()
-                print(result.count)
-            }
-        } catch {
-            print("COULDN'T DELETE")
-        }
-        
-        print("THAT NUMBER ABOVE SHOULD BE ZERO")
-    }
-    
-    func FullDateToMonthYear(dateToFormat: String) -> String {
-        let isoDate = dateToFormat
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "M/dd/yyyy"
-        let newDate = dateFormatter.date(from:isoDate)!
-        
-        let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "M/yyyy"
-        let newDateFormat : String = formatter.string(from: newDate)
-        return newDateFormat
-    }
-    
-    func GetCurrentMonthAndYear() -> String {
-        let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "M/yyyy"
-        let todayMonthYear : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
-        return todayMonthYear
-    }
-    
-    func GetCurrentDate() -> String {
-        let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "M/dd/yyyy"
-        let todayMonthYear : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
-        return todayMonthYear
-    }
-    
-    func ConvertStringToDate(date: String) -> Date {
-        let isoDate = date
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "M/d/yyyy"
-        let newDate = dateFormatter.date(from:isoDate)!
-        return newDate
-    }
-    
-    
-    func isEqual(to date: Date, toGranularity component: Calendar.Component, in calendar: Calendar = .current) -> Bool {
-        return calendar.isDate(Date(), equalTo: date, toGranularity: component)
-    }
-    
-    func isInSameWeek(as date: Date) -> Bool {
-        return isEqual(to: date, toGranularity: .weekOfYear)
     }
     
     func SetMonthlyTotalLabel() {
@@ -242,6 +175,27 @@ class ViewController: UIViewController {
         } catch {
             print("COULDN'T SET WEEKLY TOTAL LABEL")
         }
+    }
+    
+    func DeleteAllDataInMonthEntity() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: monthDataEntityName)
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try context.fetch(request)
+            print((result as! [NSManagedObject]).count)
+            for data in (result as! [NSManagedObject]).reversed() {
+                context.delete(data)
+                try context.save()
+                print(result.count)
+            }
+        } catch {
+            print("COULDN'T DELETE")
+        }
+        
+        print("THAT NUMBER ABOVE SHOULD BE ZERO")
     }
 
 }
