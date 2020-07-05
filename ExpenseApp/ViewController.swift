@@ -197,6 +197,16 @@ class ViewController: UIViewController {
         
         print("THAT NUMBER ABOVE SHOULD BE ZERO")
     }
+    
+    @IBAction func ExpenseSummaryAlert(_ sender: Any) {
+        let alertController = UIAlertController(title: "Expense Summary", message:
+            "You have clicked on Expense Summary", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default))
+        
+
+        self.present(alertController, animated: true, completion: nil)
+    }
 
 }
 

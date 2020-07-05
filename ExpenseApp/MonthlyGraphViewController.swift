@@ -33,6 +33,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         barView.leftAxis.enabled = false
         barView.xAxis.labelTextColor = .white
         barView.animate(yAxisDuration: 1.20)
+        
         return barView
     }()
     
@@ -68,7 +69,9 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         set1.colors = ChartColorTemplates.material()
         set1.valueTextColor = .white
         set1.barShadowColor = .white
+        
         let data = BarChartData(dataSet:set1)
+        
         barChartView.data = data
         
     }

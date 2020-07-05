@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 @objc(Show)
 
@@ -69,25 +70,39 @@ class AddExpenseViewController: UIViewController {
 
     @IBAction func AddExpense(_ sender: Any) {
         
-        
-        
-       let LatestExpense = Expense()
-       LatestExpense.name = NameInput.text!
-       LatestExpense.date = DateInput.text!
-        
-       let date = Date()
-       let calendar = Calendar.current
-       let hour = calendar.component(.hour, from: date)
-       let minutes = calendar.component(.minute, from: date)
-       LatestExpense.time = String(hour) + ":" + String(minutes)
-        
-        
+        let LatestExpense = Expense()
+        LatestExpense.name = NameInput.text!
+        LatestExpense.date = DateInput.text!
+
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        LatestExpense.time = String(hour) + ":" + String(minutes)
+
+
         let textAmount = AmountIInput.text!
-        let moneyValue = NumberFormatter().number(from: textAmount)?.doubleValue
-        LatestExpense.amount = moneyValue!
         
+        let moneyValue = NumberFormatter().number(from: textAmount)?.doubleValue
+        
+        if (moneyValue == nil) {
+            let alertController = UIAlertController(title: "Amount Format Error", message:
+                "There seems to be an Error with the Amount Format", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Retry", style: .default))
+            
+
+            self.present(alertController, animated: true, completion: nil)
+            return
+        } else {
+            LatestExpense.amount = moneyValue!
+        }
+        
+        
+        
+
         SaveData(purchaseName: LatestExpense.name, dateOfPurchase: LatestExpense.date, purchaseAmount: LatestExpense.amount)
         GetData()
+        //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         
     }
     
@@ -324,6 +339,8 @@ class AddExpenseViewController: UIViewController {
         
         print("THAT NUMBER ABOVE SHOULD BE ZERO")
     }
+    
+    
     
     
     /*
