@@ -11,6 +11,7 @@
 		423458E62499792600B774D1 /* expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423458E52499792600B774D1 /* expense.swift */; };
 		423B9C3B24AA3D6400A4DB9E /* MonthlyGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423B9C3A24AA3D6400A4DB9E /* MonthlyGraphViewController.swift */; };
 		423ED2C924A41C280087B66F /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 423ED2C724A41C280087B66F /* CoreData.xcdatamodeld */; };
+		42612FFD24B3DAD800315518 /* WeeklyGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42612FFC24B3DAD800315518 /* WeeklyGraphViewController.swift */; };
 		4274F91024AE956C00923940 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4274F90F24AE956C00923940 /* Date.swift */; };
 		491C6441759401224B40C947 /* Pods_ExpenseAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080CC2474563AF1167645A28 /* Pods_ExpenseAppTests.framework */; };
 		66D8D7E99826BCF3BD18BB97 /* Pods_ExpenseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FA7AA6A5D4CDB57A4675E3 /* Pods_ExpenseApp.framework */; };
@@ -48,6 +49,7 @@
 		423458E52499792600B774D1 /* expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expense.swift; sourceTree = "<group>"; };
 		423B9C3A24AA3D6400A4DB9E /* MonthlyGraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyGraphViewController.swift; sourceTree = "<group>"; };
 		423ED2C824A41C280087B66F /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		42612FFC24B3DAD800315518 /* WeeklyGraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyGraphViewController.swift; sourceTree = "<group>"; };
 		4274F90F24AE956C00923940 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		4E3A5CBE163EEC61769BD2B7 /* Pods-ExpenseAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ExpenseAppTests/Pods-ExpenseAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		59D8319D5AAD4B415C91FBC1 /* Pods_ExpenseApp_ExpenseAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpenseApp_ExpenseAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +166,7 @@
 				423ED2C724A41C280087B66F /* CoreData.xcdatamodeld */,
 				423B9C3A24AA3D6400A4DB9E /* MonthlyGraphViewController.swift */,
 				4274F90F24AE956C00923940 /* Date.swift */,
+				42612FFC24B3DAD800315518 /* WeeklyGraphViewController.swift */,
 			);
 			path = ExpenseApp;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				D4C4617D2494297B000600DB /* AddExpenseViewController.swift in Sources */,
 				D4C4614924919CD8000600DB /* AppDelegate.swift in Sources */,
 				D4C4614B24919CD8000600DB /* SceneDelegate.swift in Sources */,
+				42612FFD24B3DAD800315518 /* WeeklyGraphViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
