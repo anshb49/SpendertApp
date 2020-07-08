@@ -160,6 +160,7 @@
 				D4C4614824919CD8000600DB /* AppDelegate.swift */,
 				D4C4614A24919CD8000600DB /* SceneDelegate.swift */,
 				D4C4614C24919CD8000600DB /* ViewController.swift */,
+				4206CFAC24B67B8B009D41D9 /* ExpenseTableViewCell.swift */,
 				D4C4614E24919CD8000600DB /* Main.storyboard */,
 				D4A542E124958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png */,
 				D4C4615124919CDA000600DB /* Assets.xcassets */,
@@ -172,7 +173,6 @@
 				4274F90F24AE956C00923940 /* Date.swift */,
 				42612FFC24B3DAD800315518 /* WeeklyGraphViewController.swift */,
 				4206CFAA24B67B5B009D41D9 /* ExpenseListViewController.swift */,
-				4206CFAC24B67B8B009D41D9 /* ExpenseTableViewCell.swift */,
 			);
 			path = ExpenseApp;
 			sourceTree = "<group>";

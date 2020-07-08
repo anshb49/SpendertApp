@@ -19,6 +19,11 @@ class ExpenseListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.backgroundColor = UIColor(red: (33/255.0), green: (33/255.0), blue: (33/255.0), alpha: 1.0)
+        
+        tableView.separatorColor = .white
+       
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "DeleteTestingEntity")
@@ -45,7 +50,9 @@ extension ExpenseListViewController: UITableViewDataSource {
         let expense = expenseList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "expense", for: indexPath) as! ExpenseTableViewCell
         
-        cell.update(with: (expense.value(forKey: "nameOfPurchase") as! String))
+        cell.update(with: expense)
+        
+        cell.backgroundColor = UIColor(red: (33/255.0), green: (33/255.0), blue: (33/255.0), alpha: 1.0)
         
         return cell
     }
