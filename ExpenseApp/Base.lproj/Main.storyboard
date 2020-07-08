@@ -62,6 +62,9 @@
                                 <state key="normal" title="Expense Summary">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <segue destination="58q-it-uDp" kind="presentation" id="KZf-Cp-tvA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly Average:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npt-8a-7cE">
                                 <rect key="frame" x="37" y="349" width="133" height="21"/>
@@ -318,6 +321,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7SW-PX-OdY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="900" y="115.27093596059113"/>
+        </scene>
+        <!--Expense List View Controller-->
+        <scene sceneID="Lqd-ZM-Ay0">
+            <objects>
+                <viewController id="58q-it-uDp" customClass="ExpenseListViewController" customModule="ExpenseApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="02p-Fz-OYd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4hu-Nd-gjS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expense" rowHeight="58" id="5rt-UY-eL7" customClass="ExpenseTableViewCell" customModule="ExpenseApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5rt-UY-eL7" id="XHj-bq-ytb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nan-6A-cy5">
+                                                    <rect key="frame" x="15" y="19" width="345" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ExpenseLabel" destination="Nan-6A-cy5" id="dpe-3J-aSp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Nn3-Je-pTD" firstAttribute="trailing" secondItem="4hu-Nd-gjS" secondAttribute="trailing" id="YAl-Sl-Sei"/>
+                            <constraint firstItem="4hu-Nd-gjS" firstAttribute="top" secondItem="Nn3-Je-pTD" secondAttribute="top" id="htb-Pi-1sW"/>
+                            <constraint firstItem="4hu-Nd-gjS" firstAttribute="leading" secondItem="Nn3-Je-pTD" secondAttribute="leading" id="rn1-Ao-6hg"/>
+                            <constraint firstItem="Nn3-Je-pTD" firstAttribute="bottom" secondItem="4hu-Nd-gjS" secondAttribute="bottom" id="yXZ-0X-41G"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Nn3-Je-pTD"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="4hu-Nd-gjS" id="Hso-k4-gUZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h8D-1Z-WSQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-615.20000000000005" y="851.97044334975374"/>
         </scene>
         <!--Monthly Graph View Controller-->
         <scene sceneID="b8b-sk-fgK">
