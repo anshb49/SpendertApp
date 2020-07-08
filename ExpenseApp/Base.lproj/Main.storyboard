@@ -62,9 +62,6 @@
                                 <state key="normal" title="Expense Summary">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
-                                <connections>
-                                    <action selector="ExpenseSummaryAlert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OsW-Sy-4h2"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly Average:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npt-8a-7cE">
                                 <rect key="frame" x="37" y="349" width="133" height="21"/>
@@ -354,10 +351,10 @@
         <scene sceneID="buK-cR-VSc">
             <objects>
                 <viewController id="lpp-Yb-IpL" customClass="WeeklyGraphViewController" customModule="ExpenseApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7Yf-il-hCb">
+                    <view key="view" contentMode="scaleToFill" id="7Yf-il-hCb" customClass="BarChartView" customModule="Charts">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.1137276366" green="0.1137216315" blue="0.1137256697" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="n6Z-Pl-geH"/>
                     </view>
                 </viewController>

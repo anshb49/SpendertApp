@@ -34,7 +34,6 @@ class WeeklyGraphViewController: UIViewController {
         let barView = BarChartView()
         barView.backgroundColor = UIColor(red: (33/255.0), green: (33/255.0), blue: (33/255.0), alpha: 1.0)
         barView.xAxis.labelPosition = .bottom
-        //barView.xAxis.valueFormatter = IndexAxisValueFormatter(values: ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov"])
         barView.xAxis.labelHeight = 100
         barView.xAxis.labelWidth = 20
         barView.xAxis.granularity = 1
@@ -86,7 +85,7 @@ class WeeklyGraphViewController: UIViewController {
             }
             
             if (loopCounter != WeeksOnGraph) {
-                for i in loopCounter...WeeksOnGraph {
+                for _ in loopCounter...WeeksOnGraph {
                     labelDates.insert("", at: 0)
                 }
             }
