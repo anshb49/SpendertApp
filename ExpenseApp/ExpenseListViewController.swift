@@ -32,7 +32,7 @@ class ExpenseListViewController: UIViewController {
         do {
             let result = try context.fetch(request)
             
-            expenseList = result as! [NSManagedObject]
+            expenseList = (result as! [NSManagedObject]).reversed()
         } catch {
             print("FAILED")
         }

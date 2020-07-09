@@ -19,9 +19,9 @@ class ExpenseTableViewCell: UITableViewCell {
     @IBOutlet weak var AmountLabel: UILabel!
     
     func update(with expense: NSManagedObject) {
-        ExpenseLabel.text = expense.value(forKey: "nameOfPurchase") as! String
+        ExpenseLabel.text = (expense.value(forKey: "nameOfPurchase") as! String)
         
-        DateLabel.text = expense.value(forKey: "dateOfPurchase") as! String
+        DateLabel.text = (expense.value(forKey: "dateOfPurchase") as! String)
         
         AmountLabel.text = "$" + "\( String(format: "%.2f", (expense).value(forKey: "purchaseAmount") as! Double))"
         
