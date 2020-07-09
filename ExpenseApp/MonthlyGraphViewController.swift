@@ -17,6 +17,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
 
     let MonthsOnGraph = 12
     let monthDataEntityName = "MonthlyGraphTestEntity"
+    @IBOutlet weak var CloseButton: UIButton!
     
     
     
@@ -130,6 +131,11 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
         BarChartDataEntry(x: 8.0, y: 8.0),
         BarChartDataEntry(x: 9.0, y: 9.0)
     ]
+    
+    @IBAction func DismissViewController(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
     
     
     
