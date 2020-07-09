@@ -79,7 +79,8 @@ class ViewController: UIViewController {
             let result = try context.fetch(request)
             if ((result as! [NSManagedObject]).count > 0) {
                 RecentStoreLabel.text = ((result.last as! NSManagedObject).value(forKey: "nameOfPurchase") as! String)
-                RecentExpenseLabel.text = "$" + "\((result.last as! NSManagedObject).value(forKey: "purchaseAmount") as! Double)"
+                let FormattedLatestExpense = String(format: "%.2f", (result.last as! NSManagedObject).value(forKey: "purchaseAmount") as! Double)
+                RecentExpenseLabel.text = "$" + FormattedLatestExpense
                 SetMonthlyTotalLabel()
                 SetWeeklyTotalLabel()
             }
