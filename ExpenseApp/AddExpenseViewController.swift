@@ -158,11 +158,14 @@ class AddExpenseViewController: UIViewController {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: weekDataEntityName)
         request.returnsObjectsAsFaults = false
         var weeklyTotal = 0.0
+        var previousDate = String()
         do {
             var result = try context.fetch(request)
             let currentWeeklyTotal = result.popLast() as! NSManagedObject
             weeklyTotal = currentWeeklyTotal.value(forKey: "weeklyTotal") as! Double
             //context.delete(result.popLast() as! NSManagedObject)
+            previousDate = currentWeeklyTotal.value(forKey: "week") as! String
+            
             context.delete(currentWeeklyTotal)
             try context.save()
             
@@ -171,7 +174,7 @@ class AddExpenseViewController: UIViewController {
             let newEntity = NSManagedObject(entity: entity!, insertInto: context)
             
             newEntity.setValue(weeklyTotal + purchaseAmount, forKey: "weeklyTotal")
-            newEntity.setValue(DateFunctions.GetTodaysDate(), forKey: "week")
+            newEntity.setValue(previousDate, forKey: "week")
             
             try context.save()
             result = try context.fetch(request)
@@ -190,10 +193,12 @@ class AddExpenseViewController: UIViewController {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: weekDataEntityName)
         request.returnsObjectsAsFaults = false
         var weeklyTotal = 0.0
+        var previousDate = String()
         do {
             var result = try context.fetch(request)
             let currentWeeklyTotal = result.popLast() as! NSManagedObject
             weeklyTotal = currentWeeklyTotal.value(forKey: "weeklyTotal") as! Double
+            previousDate = currentWeeklyTotal.value(forKey: "week") as! String
             context.delete(currentWeeklyTotal)
             try context.save()
             
@@ -202,7 +207,7 @@ class AddExpenseViewController: UIViewController {
             let newEntity = NSManagedObject(entity: entity!, insertInto: context)
             
             newEntity.setValue(weeklyTotal - purchaseAmount, forKey: "weeklyTotal")
-            newEntity.setValue(DateFunctions.GetTodaysDate(), forKey: "week")
+            newEntity.setValue(previousDate, forKey: "week")
             
             try context.save()
             result = try context.fetch(request)
