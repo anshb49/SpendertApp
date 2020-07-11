@@ -9,10 +9,16 @@
 import UIKit
 import CoreData
 import AVFoundation
+import Vision
+import VisionKit
 
-@objc(Show)
 
-class AddExpenseViewController: UIViewController {
+
+class AddExpenseViewController: UIViewController, VNDocumentCameraViewControllerDelegate {
+    
+    var textRecognitionRequest = VNRecognizeTextRequest(completionHandler: nil)
+    private let textRecognitionWorkQueue = DispatchQueue(label: "MyVisionScannerQueue", qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
+
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -42,6 +48,7 @@ class AddExpenseViewController: UIViewController {
     
     @IBOutlet weak var DeleteLastExpenseTestButton: UIButton!
     
+    @IBOutlet weak var TestLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +69,8 @@ class AddExpenseViewController: UIViewController {
         //DeleteAllDataInMonthEntity()
         //GetData()
         
+        setupVision()
+        print("HELLO THIS IS THE VIEW CONTROLLER CHECKPOINT")
     }
     
     @objc func DismissKeyboard() {
@@ -348,6 +357,8 @@ class AddExpenseViewController: UIViewController {
     
     
     
+    
+    
     /*
     // MARK: - Navigation
 
@@ -357,5 +368,86 @@ class AddExpenseViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func ScanReceipt(_ sender: Any) {
+        print("Receipt Scanned")
+        let scannerViewController = VNDocumentCameraViewController()
+        scannerViewController.delegate = self
+        present(scannerViewController, animated: true)
+    }
+    
+    private func setupVision() {
+        textRecognitionRequest = VNRecognizeTextRequest { (request, error) in
+            guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
+            
+            var detectedText = ""
+            for observation in observations {
+                guard let topCandidate = observation.topCandidates(1).first else { return }
+                print("text \(topCandidate.string) has confidence \(topCandidate.confidence)")
+    
+                detectedText += topCandidate.string
+                detectedText += "\n"
+                
+            
+            }
+            
+            DispatchQueue.main.async {
+                self.AmountIInput.text = detectedText
+                //self.TestLabel.flashScrollIndicators()
 
+            }
+        }
+
+        textRecognitionRequest.recognitionLevel = .accurate
+    }
+    
+    private func processImage(_ image: UIImage) {
+        //imageView.image = image
+        recognizeTextInImage(image)
+    }
+    
+    private func recognizeTextInImage(_ image: UIImage) {
+        guard let cgImage = image.cgImage else { return }
+        
+        AmountIInput.text = ""
+        textRecognitionWorkQueue.async {
+            let requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+            do {
+                try requestHandler.perform([self.textRecognitionRequest])
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        guard scan.pageCount >= 1 else {
+            controller.dismiss(animated: true)
+            return
+        }
+        
+        let originalImage = scan.imageOfPage(at: 0)
+        let newImage = compressedImage(originalImage)
+        controller.dismiss(animated: true)
+        
+        processImage(newImage)
+    }
+    
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
+        print(error)
+        controller.dismiss(animated: true)
+    }
+    
+    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+        controller.dismiss(animated: true)
+    }
+
+    func compressedImage(_ originalImage: UIImage) -> UIImage {
+        guard let imageData = originalImage.jpegData(compressionQuality: 1),
+            let reloadedImage = UIImage(data: imageData) else {
+                return originalImage
+        }
+        return reloadedImage
+    }
+    
 }

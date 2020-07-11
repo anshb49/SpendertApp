@@ -107,6 +107,7 @@ class CameraViewController: UIViewController, VNDocumentCameraViewControllerDele
         scannerViewController.delegate = self
         present(scannerViewController, animated: true)
     }
+    
     /*
     // MARK: - Navigation
 
