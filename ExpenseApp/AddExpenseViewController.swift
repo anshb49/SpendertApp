@@ -50,8 +50,12 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
     
     @IBOutlet weak var TestLabel: UILabel!
     
+    @IBOutlet weak var CameraButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         let Tap:UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))

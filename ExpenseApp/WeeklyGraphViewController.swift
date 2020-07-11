@@ -100,6 +100,10 @@ class WeeklyGraphViewController: UIViewController {
     }
     
     
+    @IBAction func CloseViewController(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
     
 
     /*
