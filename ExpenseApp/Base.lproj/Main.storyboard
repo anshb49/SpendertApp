@@ -302,16 +302,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4hu-Nd-gjS">
-                                <rect key="frame" x="-2" y="60" width="414" height="791"/>
+                                <rect key="frame" x="-2" y="60" width="416" height="791"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1137276366" green="0.1137216315" blue="0.1137256697" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="sectionIndexBackgroundColor" red="0.1137276366" green="0.1137216315" blue="0.1137256697" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expense" rowHeight="58" id="5rt-UY-eL7" customClass="ExpenseTableViewCell" customModule="ExpenseApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="58"/>
+                                        <rect key="frame" x="0.0" y="28" width="416" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5rt-UY-eL7" id="XHj-bq-ytb">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="416" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nan-6A-cy5">
@@ -390,19 +390,21 @@
                                     <action selector="DismissViewController:" destination="vQP-cb-TZ2" eventType="touchUpInside" id="xGW-wH-oVC"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vEx-Kp-qZu">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vEx-Kp-qZu">
                                 <rect key="frame" x="-3" y="51" width="420" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="progressTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="trackTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.859925176056338" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="48h-RR-4iS" firstAttribute="leading" secondItem="zSQ-JK-TnK" secondAttribute="leading" id="QM6-G8-G2m"/>
-                            <constraint firstItem="zSQ-JK-TnK" firstAttribute="bottom" secondItem="48h-RR-4iS" secondAttribute="bottom" constant="755" id="dsV-M3-hzA"/>
-                            <constraint firstItem="48h-RR-4iS" firstAttribute="centerX" secondItem="mTe-CH-KBt" secondAttribute="centerX" id="tSb-zA-BDn"/>
-                            <constraint firstItem="48h-RR-4iS" firstAttribute="top" secondItem="zSQ-JK-TnK" secondAttribute="top" id="y1w-w2-ydx"/>
+                            <constraint firstItem="vEx-Kp-qZu" firstAttribute="leading" secondItem="mTe-CH-KBt" secondAttribute="leadingMargin" constant="-23" id="0MG-r2-U9q"/>
+                            <constraint firstItem="48h-RR-4iS" firstAttribute="leading" secondItem="zSQ-JK-TnK" secondAttribute="leading" id="5Od-yZ-6j0"/>
+                            <constraint firstItem="vEx-Kp-qZu" firstAttribute="bottom" secondItem="48h-RR-4iS" secondAttribute="bottom" id="JBh-7q-mAL"/>
+                            <constraint firstItem="vEx-Kp-qZu" firstAttribute="top" secondItem="zSQ-JK-TnK" secondAttribute="top" constant="51" id="Jkj-UC-UM0"/>
+                            <constraint firstItem="48h-RR-4iS" firstAttribute="centerX" secondItem="mTe-CH-KBt" secondAttribute="centerX" id="f7G-Q3-jji"/>
+                            <constraint firstItem="48h-RR-4iS" firstAttribute="centerX" secondItem="vEx-Kp-qZu" secondAttribute="centerX" id="ohT-sH-xo9"/>
+                            <constraint firstItem="48h-RR-4iS" firstAttribute="top" secondItem="zSQ-JK-TnK" secondAttribute="top" id="uo4-Ku-XmT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zSQ-JK-TnK"/>
                     </view>
@@ -422,9 +424,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vmk-NO-KfR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vmk-NO-KfR">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1137276366" green="0.1137216315" blue="0.1137256697" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Close">
@@ -435,14 +436,22 @@
                                     <action selector="DismissViewController:" destination="vQP-cb-TZ2" eventType="touchUpInside" id="IXA-Bc-ewa"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="u9o-Zt-LPc">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="u9o-Zt-LPc">
                                 <rect key="frame" x="-3" y="51" width="420" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="progressTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="trackTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" red="0.1137276366" green="0.1137216315" blue="0.1137256697" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Vmk-NO-KfR" firstAttribute="leading" secondItem="n6Z-Pl-geH" secondAttribute="leading" id="JZ7-Oh-alP"/>
+                            <constraint firstItem="Vmk-NO-KfR" firstAttribute="centerX" secondItem="u9o-Zt-LPc" secondAttribute="centerX" id="R0G-a2-H0s"/>
+                            <constraint firstItem="u9o-Zt-LPc" firstAttribute="bottom" secondItem="Vmk-NO-KfR" secondAttribute="bottom" id="Y0H-JH-PyI"/>
+                            <constraint firstItem="u9o-Zt-LPc" firstAttribute="top" secondItem="n6Z-Pl-geH" secondAttribute="top" constant="51" id="dBA-K6-i7I"/>
+                            <constraint firstItem="u9o-Zt-LPc" firstAttribute="leading" secondItem="7Yf-il-hCb" secondAttribute="leadingMargin" constant="-23" id="thO-gE-SkZ"/>
+                            <constraint firstItem="Vmk-NO-KfR" firstAttribute="centerX" secondItem="7Yf-il-hCb" secondAttribute="centerX" id="xfC-YK-0yp"/>
+                            <constraint firstItem="Vmk-NO-KfR" firstAttribute="top" secondItem="n6Z-Pl-geH" secondAttribute="top" id="zfW-1D-Yz3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="n6Z-Pl-geH"/>
                     </view>
                 </viewController>
