@@ -633,13 +633,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9AB59535KG;
+				DEVELOPMENT_TEAM = 7RMT3R5P3M;
 				INFOPLIST_FILE = ExpenseApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = PravalTelagiExpense.ExpenseApp;
+				PRODUCT_BUNDLE_IDENTIFIER = AnshBhalla.ExpenseApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -654,13 +654,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9AB59535KG;
+				DEVELOPMENT_TEAM = 7RMT3R5P3M;
 				INFOPLIST_FILE = ExpenseApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = PravalTelagiExpense.ExpenseApp;
+				PRODUCT_BUNDLE_IDENTIFIER = AnshBhalla.ExpenseApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

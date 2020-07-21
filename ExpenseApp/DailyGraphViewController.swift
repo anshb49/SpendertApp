@@ -103,6 +103,11 @@ class DailyGraphViewController: UIViewController {
         return dailyExpenseVals
     }
 
+
+    @IBAction func CloseDailyGraph(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

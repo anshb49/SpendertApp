@@ -47,7 +47,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weekly Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npt-8a-7cE">
-                                <rect key="frame" x="37" y="359" width="117" height="21"/>
+                                <rect key="frame" x="37" y="359" width="116" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -68,7 +68,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etz-hn-kJY">
-                                <rect key="frame" x="37" y="415" width="334" height="21"/>
+                                <rect key="frame" x="37" y="415" width="333" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -82,7 +82,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEU-4L-xGS">
-                                <rect key="frame" x="37" y="267" width="334" height="21"/>
+                                <rect key="frame" x="37" y="267" width="333" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -468,55 +468,44 @@
                     <view key="view" contentMode="scaleToFill" id="fhC-5c-xP0" customClass="BarChartView" customModule="Charts">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11J-30-Dzd">
+                                <rect key="frame" x="3" y="0.0" width="414" height="53"/>
+                                <color key="backgroundColor" red="0.1137276366" green="0.1137216315" blue="0.1137256697" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" red="1" green="0.99998801950000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="CloseDailyGraph:" destination="zWv-q4-aeh" eventType="touchUpInside" id="ZiL-rV-aNM"/>
+                                    <action selector="CloseViewController:" destination="lpp-Yb-IpL" eventType="touchUpInside" id="sea-G6-TtA"/>
+                                    <action selector="DismissViewController:" destination="vQP-cb-TZ2" eventType="touchUpInside" id="vhh-Qq-Ta1"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bvh-d5-9tN">
+                                <rect key="frame" x="0.0" y="51" width="420" height="2"/>
+                                <color key="progressTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="trackTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1137265339" green="0.11372355369999999" blue="0.1137255952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="11J-30-Dzd" firstAttribute="top" secondItem="SPo-Jc-hZR" secondAttribute="top" id="2cP-SR-UV4"/>
+                            <constraint firstItem="11J-30-Dzd" firstAttribute="leading" secondItem="SPo-Jc-hZR" secondAttribute="leading" constant="3" id="5e9-y5-cOE"/>
+                            <constraint firstItem="11J-30-Dzd" firstAttribute="centerX" secondItem="bvh-d5-9tN" secondAttribute="centerX" id="8Nl-gZ-xPI"/>
+                            <constraint firstItem="11J-30-Dzd" firstAttribute="bottom" secondItem="bvh-d5-9tN" secondAttribute="bottom" id="ELj-c0-eiQ"/>
+                            <constraint firstItem="SPo-Jc-hZR" firstAttribute="bottom" secondItem="11J-30-Dzd" secondAttribute="bottom" constant="755" id="Oaa-hz-oAH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="11J-30-Dzd" secondAttribute="trailing" constant="-23" id="zqg-mi-TIz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="SPo-Jc-hZR"/>
                     </view>
+                    <connections>
+                        <outlet property="CloseOnDaily" destination="fhC-5c-xP0" id="OgW-2s-26C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xeY-tq-6qw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1697" y="854"/>
-        </scene>
-        <!--Camera View Controller-->
-        <scene sceneID="VqB-Vg-a23">
-            <objects>
-                <viewController id="Oev-rK-Kq6" customClass="CameraViewController" customModule="ExpenseApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EPr-Jf-2ns">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amd-yZ-h5Q">
-                                <rect key="frame" x="184" y="102" width="46" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="OpenCamera:" destination="Oev-rK-Kq6" eventType="touchUpInside" id="Vdv-ge-CaT"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tWs-Uj-9Ws">
-                                <rect key="frame" x="70" y="203" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iR7-Gd-eWK">
-                                <rect key="frame" x="106" y="478" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="cId-9f-uot"/>
-                    </view>
-                    <connections>
-                        <outlet property="imageView" destination="iR7-Gd-eWK" id="xs2-1C-hfY"/>
-                        <outlet property="textView" destination="tWs-Uj-9Ws" id="eJz-JW-8Kz"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yN6-89-tPU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2161" y="115"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
