@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -41,7 +41,9 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <segue destination="58q-it-uDp" kind="presentation" id="oBL-iS-Bni"/>
+                                    <segue destination="zWv-q4-aeh" kind="popoverPresentation" popoverAnchorView="Tsu-oR-jKc" id="ivF-e1-Dzz">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weekly Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npt-8a-7cE">
@@ -459,6 +461,21 @@
             </objects>
             <point key="canvasLocation" x="900" y="853"/>
         </scene>
+        <!--Daily Graph View Controller-->
+        <scene sceneID="pAB-O3-a2q">
+            <objects>
+                <viewController id="zWv-q4-aeh" customClass="DailyGraphViewController" customModule="ExpenseApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fhC-5c-xP0" customClass="BarChartView" customModule="Charts">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="SPo-Jc-hZR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xeY-tq-6qw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1697" y="854"/>
+        </scene>
         <!--Camera View Controller-->
         <scene sceneID="VqB-Vg-a23">
             <objects>
@@ -499,11 +516,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yN6-89-tPU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2271.0144927536235" y="325.44642857142856"/>
+            <point key="canvasLocation" x="2161" y="115"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oBL-iS-Bni"/>
         <segue reference="995-fL-358"/>
     </inferredMetricsTieBreakers>
     <resources>

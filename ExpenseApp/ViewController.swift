@@ -65,6 +65,7 @@ class ViewController: UIViewController {
         //DeleteAllDataInMonthEntity()
         SetupWeekCostSaving()
         SetupMonthCostSaving()
+        SetupDailyCostSaving()
         LoadFrontPageData()
         
     }
@@ -105,6 +106,27 @@ class ViewController: UIViewController {
                 newEntity.setValue(DateFunctions.GetCurrentMonthAndYear(), forKey: "month")
             }
             
+            try context.save()
+        } catch {
+            print("ERROR")
+        }
+    }
+    
+    func SetupDailyCostSaving() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "DailyGraphTestEntity")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try context.fetch(request)
+            print(result.count)
+            if ((result as! [NSManagedObject]).count == 0 || (result.last as! NSManagedObject).value(forKey: "date") as! String != DateFunctions.GetTodaysDate()) {
+                let entity = NSEntityDescription.entity(forEntityName: "DailyGraphTestEntity", in: context)
+                let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+                newEntity.setValue(0, forKey: "dailyTotal")
+                newEntity.setValue(DateFunctions.GetTodaysDate(), forKey: "date")
+            }
             try context.save()
         } catch {
             print("ERROR")

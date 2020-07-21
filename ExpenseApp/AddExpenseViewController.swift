@@ -71,6 +71,7 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
         LeavePage.layer.cornerRadius = 20
         LeavePage.clipsToBounds = true
         //DeleteAllDataInMonthEntity()
+        //DeleteAllDataInDailyEntity()
         //GetData()
         
         setupVision()
@@ -157,6 +158,7 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
         newEntity.setValue(purchaseAmount, forKey: "purchaseAmount")
         AddLatestExpenseToMonthlyTotal(purchaseAmount: purchaseAmount)
         AddLatestExpenseToWeeklyTotal(purchaseAmount: purchaseAmount)
+        AddLatestExpenseToDailyTotal(purchaseAmount: purchaseAmount)
         do {
             try context.save()
             print("SAVED")
@@ -291,6 +293,67 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
         }
     }
     
+    func AddLatestExpenseToDailyTotal(purchaseAmount: Double) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "DailyGraphTestEntity")
+        request.returnsObjectsAsFaults = false
+        var dailyTotal = 0.0
+        do {
+            var result = try context.fetch(request)
+            let currentDailyTotal = result.popLast() as! NSManagedObject
+            dailyTotal = currentDailyTotal.value(forKey: "dailyTotal") as! Double
+            //context.delete(result.popLast() as! NSManagedObject)
+            context.delete(currentDailyTotal)
+            try context.save()
+            
+            
+            let entity = NSEntityDescription.entity(forEntityName: "DailyGraphTestEntity", in: context)
+            let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+            
+            newEntity.setValue(dailyTotal + purchaseAmount, forKey: "dailyTotal")
+            newEntity.setValue(DateFunctions.GetTodaysDate(), forKey: "date")
+            
+            try context.save()
+            result = try context.fetch(request)
+            
+            /*for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "monthlyTotal") as! Double)
+            }*/
+        } catch {
+            print("COULDN'T DELETE")
+        }
+    }
+    
+    func DeleteLatestExpenseFromDailyTotal(purchaseAmount: Double) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "DailyGraphTestEntity")
+        request.returnsObjectsAsFaults = false
+        
+        var dailyTotal = 0.0
+        do {
+            var result = try context.fetch(request)
+            let currentDailyTotal = result.popLast() as! NSManagedObject
+            dailyTotal = currentDailyTotal.value(forKey: "dailyTotal") as! Double
+            context.delete(currentDailyTotal)
+            try context.save()
+            
+            
+            let entity = NSEntityDescription.entity(forEntityName: "DailyGraphTestEntity", in: context)
+            let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+            
+            newEntity.setValue(dailyTotal - purchaseAmount, forKey: "dailyTotal")
+            newEntity.setValue(DateFunctions.GetTodaysDate(), forKey: "date")
+            
+            try context.save()
+            result = try context.fetch(request)
+            
+        } catch {
+            print("COULDN'T DELETE")
+        }
+    }
+    
     func DeleteLastExpense() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -303,6 +366,7 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
             context.delete(result.popLast() as! NSManagedObject)
             DeleteLatestExpenseFromMonthlyTotal(purchaseAmount: lastPurchaseAmount)
             DeleteLatestExpenseFromWeeklyTotal(purchaseAmount: lastPurchaseAmount)
+            DeleteLatestExpenseFromDailyTotal(purchaseAmount: lastPurchaseAmount)
             try context.save()
         } catch {
             print("COULDN'T DELETE")
@@ -340,6 +404,28 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: currentEntityName)
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try context.fetch(request)
+            print((result as! [NSManagedObject]).count)
+            for data in (result as! [NSManagedObject]).reversed()  {
+                context.delete(data)
+                try context.save()
+                print(result.count)
+            }
+        } catch {
+            print("COULDN'T DELETE")
+        }
+        
+        
+        print("THAT NUMBER ABOVE SHOULD BE ZERO")
+    }
+    
+    func DeleteAllDataInDailyEntity() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "DailyGraphTestEntity")
         request.returnsObjectsAsFaults = false
         
         do {
