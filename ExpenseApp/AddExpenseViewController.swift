@@ -50,7 +50,9 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
     
     @IBOutlet weak var TestLabel: UILabel!
     
-    @IBOutlet weak var CameraButton: UIButton!
+    @IBOutlet weak var camera: UIButton!
+    
+
     
     
     override func viewDidLoad() {
@@ -70,6 +72,13 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
         
         LeavePage.layer.cornerRadius = 20
         LeavePage.clipsToBounds = true
+        
+        camera.layer.cornerRadius = 20
+        camera.clipsToBounds = true
+        
+        
+        
+
         //DeleteAllDataInMonthEntity()
         //DeleteAllDataInDailyEntity()
         //GetData()
@@ -86,7 +95,7 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
         
         let LatestExpense = Expense()
         LatestExpense.name = NameInput.text!
-        LatestExpense.date = DateInput.text!
+        //LatestExpense.date = DateInput.text!
 
         let date = Date()
         let calendar = Calendar.current
@@ -122,7 +131,7 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
     
     @IBAction func ResetInputs(_ sender: Any) {
         NameInput.text = ""
-        DateInput.text = ""
+        //DateInput.text = ""
         //TimeInput.text = ""
     }
     

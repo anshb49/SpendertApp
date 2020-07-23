@@ -18,6 +18,7 @@
 		42FC1BAD24C7A2E700DDC3DC /* DailyGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FC1BAC24C7A2E700DDC3DC /* DailyGraphViewController.swift */; };
 		491C6441759401224B40C947 /* Pods_ExpenseAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080CC2474563AF1167645A28 /* Pods_ExpenseAppTests.framework */; };
 		66D8D7E99826BCF3BD18BB97 /* Pods_ExpenseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FA7AA6A5D4CDB57A4675E3 /* Pods_ExpenseApp.framework */; };
+		D41E36F624C94AB500C5DFCB /* Screen Shot 2020-07-22 at 9.18.08 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = D41E36F524C94AB500C5DFCB /* Screen Shot 2020-07-22 at 9.18.08 PM.png */; };
 		D48B274124B9295E0072090D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48B274024B9295E0072090D /* CameraViewController.swift */; };
 		D48B274524B989810072090D /* Screen Shot 2020-07-10 at 10.44.40 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = D48B274424B989810072090D /* Screen Shot 2020-07-10 at 10.44.40 PM.png */; };
 		D4A542E224958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A542E124958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png */; };
@@ -67,6 +68,7 @@
 		935EBDF21C13873BCE7384D0 /* Pods-ExpenseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseApp.release.xcconfig"; path = "Target Support Files/Pods-ExpenseApp/Pods-ExpenseApp.release.xcconfig"; sourceTree = "<group>"; };
 		98FDD74AEBDB317746664D7E /* Pods-ExpenseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseApp.debug.xcconfig"; path = "Target Support Files/Pods-ExpenseApp/Pods-ExpenseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		99FA7AA6A5D4CDB57A4675E3 /* Pods_ExpenseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpenseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D41E36F524C94AB500C5DFCB /* Screen Shot 2020-07-22 at 9.18.08 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2020-07-22 at 9.18.08 PM.png"; sourceTree = "<group>"; };
 		D48B274024B9295E0072090D /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		D48B274424B989810072090D /* Screen Shot 2020-07-10 at 10.44.40 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2020-07-10 at 10.44.40 PM.png"; sourceTree = "<group>"; };
 		D4A542E124958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2020-06-13 at 3.22.06 PM.png"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		D4C4614724919CD8000600DB /* ExpenseApp */ = {
 			isa = PBXGroup;
 			children = (
+				D41E36F524C94AB500C5DFCB /* Screen Shot 2020-07-22 at 9.18.08 PM.png */,
 				D48B274424B989810072090D /* Screen Shot 2020-07-10 at 10.44.40 PM.png */,
 				D4C4614824919CD8000600DB /* AppDelegate.swift */,
 				D4C4614A24919CD8000600DB /* SceneDelegate.swift */,
@@ -313,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41E36F624C94AB500C5DFCB /* Screen Shot 2020-07-22 at 9.18.08 PM.png in Resources */,
 				D48B274524B989810072090D /* Screen Shot 2020-07-10 at 10.44.40 PM.png in Resources */,
 				D4A542E224958EB8002ED6DF /* Screen Shot 2020-06-13 at 3.22.06 PM.png in Resources */,
 				D4C4615524919CDA000600DB /* LaunchScreen.storyboard in Resources */,
