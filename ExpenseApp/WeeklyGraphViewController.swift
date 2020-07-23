@@ -48,7 +48,7 @@ class WeeklyGraphViewController: UIViewController {
     
     func setData() {
         let set1 = BarChartDataSet(entries: LoadData(), label:"")
-        set1.colors = ChartColorTemplates.material()
+        set1.colors = ChartColorTemplates.colorful()
         set1.valueTextColor = .white
         set1.barShadowColor = .white
         

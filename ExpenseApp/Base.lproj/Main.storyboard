@@ -87,13 +87,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npt-8a-7cE">
-                                <rect key="frame" x="38" y="320" width="77" height="21"/>
+                                <rect key="frame" x="38" y="320" width="113" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Expense:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-aT-hhV">
-                                <rect key="frame" x="40" y="455" width="111" height="21"/>
+                                <rect key="frame" x="40" y="455" width="138" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="mlA-d4-2uM"/>
                                 </constraints>
@@ -117,7 +117,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pE-ef-dGg">
-                                <rect key="frame" x="38" y="182" width="87" height="21"/>
+                                <rect key="frame" x="38" y="182" width="122" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -150,7 +150,7 @@
                             <constraint firstItem="owo-gE-fAX" firstAttribute="centerX" secondItem="I2v-tS-JJd" secondAttribute="centerX" id="5tS-ev-I6D"/>
                             <constraint firstItem="I2v-tS-JJd" firstAttribute="leading" secondItem="kCr-JR-AXx" secondAttribute="leading" id="6zH-K5-sr6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bLt-IQ-aae" secondAttribute="bottom" constant="3" id="Asg-3h-Cth"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="npt-8a-7cE" secondAttribute="trailing" constant="260" id="B0G-V5-FYQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="npt-8a-7cE" secondAttribute="trailing" constant="224" id="B0G-V5-FYQ"/>
                             <constraint firstItem="3pE-ef-dGg" firstAttribute="top" secondItem="8fB-uv-J2R" secondAttribute="bottom" constant="41" id="B62-4O-GRl"/>
                             <constraint firstItem="8fB-uv-J2R" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="Cj2-3l-nVw"/>
                             <constraint firstItem="kCr-JR-AXx" firstAttribute="leading" secondItem="Tsu-oR-jKc" secondAttribute="leading" id="DeT-gA-V0y"/>
@@ -164,7 +164,7 @@
                             <constraint firstItem="QgA-xA-UCf" firstAttribute="leading" secondItem="I3r-ZV-u1z" secondAttribute="trailing" constant="8" id="Pai-3n-U5u"/>
                             <constraint firstItem="QgA-xA-UCf" firstAttribute="trailing" secondItem="i4N-Us-BqR" secondAttribute="trailing" id="Qht-VA-BpP"/>
                             <constraint firstItem="QgA-xA-UCf" firstAttribute="top" secondItem="kCr-JR-AXx" secondAttribute="bottom" constant="92" id="RLq-sn-nRJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3pE-ef-dGg" secondAttribute="trailing" constant="250" id="RgA-aO-0cf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3pE-ef-dGg" secondAttribute="trailing" constant="215" id="RgA-aO-0cf"/>
                             <constraint firstItem="BEU-4L-xGS" firstAttribute="top" secondItem="3pE-ef-dGg" secondAttribute="bottom" constant="31" id="SUx-LD-fNl"/>
                             <constraint firstItem="owo-gE-fAX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="95" id="TfU-YE-Eeg"/>
                             <constraint firstItem="3pE-ef-dGg" firstAttribute="leading" secondItem="BEU-4L-xGS" secondAttribute="leading" id="Tsp-RU-XBP"/>
@@ -178,7 +178,7 @@
                             <constraint firstItem="Tsu-oR-jKc" firstAttribute="top" secondItem="kCr-JR-AXx" secondAttribute="bottom" constant="28" id="fEh-if-ndD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BEU-4L-xGS" secondAttribute="trailing" constant="43" id="g4a-Oz-SDe"/>
                             <constraint firstItem="npt-8a-7cE" firstAttribute="leading" secondItem="etz-hn-kJY" secondAttribute="leading" id="gyV-To-XKn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ssh-aT-hhV" secondAttribute="trailing" constant="224" id="iC3-gs-otx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ssh-aT-hhV" secondAttribute="trailing" constant="197" id="iC3-gs-otx"/>
                             <constraint firstItem="i4N-Us-BqR" firstAttribute="trailing" secondItem="bLt-IQ-aae" secondAttribute="trailing" id="iPg-Q1-yJA"/>
                             <constraint firstItem="I2v-tS-JJd" firstAttribute="trailing" secondItem="kCr-JR-AXx" secondAttribute="trailing" id="j83-dD-Aka"/>
                             <constraint firstItem="bLt-IQ-aae" firstAttribute="top" secondItem="i4N-Us-BqR" secondAttribute="bottom" constant="16" id="jYi-hg-ddS"/>
@@ -206,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.23188405797103" y="115.17857142857142"/>
+            <point key="canvasLocation" x="135.19999999999999" y="114.53201970443351"/>
         </scene>
         <!--Add Expense View Controller-->
         <scene sceneID="eOM-eG-TAt">
