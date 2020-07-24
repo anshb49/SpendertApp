@@ -369,8 +369,24 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: currentEntityName)
         request.returnsObjectsAsFaults = false
         
+        
+        
+        
         do {
             var result = try context.fetch(request)
+            
+            let resultCount = (result as! [NSManagedObject]).count
+            
+            if (resultCount == 0) {
+                let alertController = UIAlertController(title: "No Expenses To Delete", message:
+                    "There are no Expenses logged to delete", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                
+
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
+            
             let lastPurchaseAmount = (result.last as! NSManagedObject).value(forKey: "purchaseAmount") as! Double
             context.delete(result.popLast() as! NSManagedObject)
             DeleteLatestExpenseFromMonthlyTotal(purchaseAmount: lastPurchaseAmount)
@@ -418,6 +434,9 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
         do {
             let result = try context.fetch(request)
             print((result as! [NSManagedObject]).count)
+            
+            
+            
             for data in (result as! [NSManagedObject]).reversed()  {
                 context.delete(data)
                 try context.save()
