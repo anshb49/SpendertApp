@@ -480,10 +480,12 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
             guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
             
             var detectedText = ""
+            var counter = 0
             for observation in observations {
                 guard let topCandidate = observation.topCandidates(1).first else { return }
                 print("text \(topCandidate.string) has confidence \(topCandidate.confidence)")
-    
+                counter += 1
+                print(counter)
                 detectedText += topCandidate.string
                 detectedText += "\n"
                 
