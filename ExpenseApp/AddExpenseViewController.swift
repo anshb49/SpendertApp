@@ -475,6 +475,8 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
         present(scannerViewController, animated: true)
     }
     
+    var nameIsPrinted = false
+    
     private func setupVision() {
         textRecognitionRequest = VNRecognizeTextRequest { (request, error) in
             guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
@@ -493,7 +495,15 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
             }
             
             DispatchQueue.main.async {
-                self.AmountIInput.text = detectedText
+                
+                if !self.nameIsPrinted {
+                    self.NameInput.text = detectedText
+                    self.nameIsPrinted = true
+                } else {
+                    self.AmountIInput.text = detectedText
+                }
+                
+                
                 //self.TestLabel.flashScrollIndicators()
 
             }
@@ -528,10 +538,14 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
         }
         
         let originalImage = scan.imageOfPage(at: 0)
+        let receiptImage = scan.imageOfPage(at: 1)
         let newImage = compressedImage(originalImage)
+        let newReceiptImage = compressedImage(receiptImage)
         controller.dismiss(animated: true)
         
+        
         processImage(newImage)
+        processImage(newReceiptImage)
     }
     
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
