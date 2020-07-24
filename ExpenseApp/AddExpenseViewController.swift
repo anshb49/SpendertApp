@@ -536,16 +536,25 @@ class AddExpenseViewController: UIViewController, VNDocumentCameraViewController
             controller.dismiss(animated: true)
             return
         }
-        
-        let originalImage = scan.imageOfPage(at: 0)
-        let receiptImage = scan.imageOfPage(at: 1)
-        let newImage = compressedImage(originalImage)
-        let newReceiptImage = compressedImage(receiptImage)
-        controller.dismiss(animated: true)
-        
-        
-        processImage(newImage)
-        processImage(newReceiptImage)
+        if (scan.pageCount > 1) {
+            let originalImage = scan.imageOfPage(at: 0)
+            let receiptImage = scan.imageOfPage(at: 1)
+            let newImage = compressedImage(originalImage)
+            let newReceiptImage = compressedImage(receiptImage)
+            controller.dismiss(animated: true)
+            
+            
+            processImage(newImage)
+            processImage(newReceiptImage)
+        } else {
+            let originalImage = scan.imageOfPage(at: 0)
+            
+            let newImage = compressedImage(originalImage)
+            
+            controller.dismiss(animated: true)
+            processImage(newImage)
+            nameIsPrinted = true
+        }
     }
     
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
