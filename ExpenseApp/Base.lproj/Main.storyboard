@@ -510,6 +510,14 @@
                                 <color key="progressTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="trackTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weekly Average" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDK-VI-Did">
+                                <rect key="frame" x="0.0" y="61" width="375" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1137265339" green="0.11372355369999999" blue="0.1137255952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="22"/>
+                                <color key="textColor" red="0.021231919530000001" green="1" blue="0.52932596210000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1137276366" green="0.1137216315" blue="0.1137256697" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -523,10 +531,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="n6Z-Pl-geH"/>
                     </view>
+                    <connections>
+                        <outlet property="WeeklyAverageLabel" destination="hDK-VI-Did" id="Usq-kx-bcU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lS1-0X-sEj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="853"/>
+            <point key="canvasLocation" x="900" y="852.70935960591135"/>
         </scene>
         <!--Daily Graph View Controller-->
         <scene sceneID="pAB-O3-a2q">

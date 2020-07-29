@@ -13,6 +13,8 @@ import Charts
 
 class WeeklyGraphViewController: UIViewController {
     
+    @IBOutlet weak var WeeklyAverageLabel: UILabel!
+    
     let WeeksOnGraph = 6
     let weeklyDataEntityName = "WeeklyGraphTestEntity"
 
@@ -66,18 +68,21 @@ class WeeklyGraphViewController: UIViewController {
         request.returnsObjectsAsFaults = false
         
         var labelDates = [String]()
+        var WeeklyTotals = 0.0
+        var loopCounter = 0
         
         do {
             let result = try context.fetch(request)
             
             let dataArray = result as! [NSManagedObject]
-            var loopCounter = 0
+            
             for data in dataArray.reversed() {
                 if (loopCounter + 1 == WeeksOnGraph) {
                     break
                 }
                 
                 let yPos = data.value(forKey: "weeklyTotal") as! Double
+                WeeklyTotals += yPos
                 labelDates.insert(data.value(forKey: "week") as! String, at: 0)
                 weeklyExpenseVals.append(BarChartDataEntry(x: Double(WeeksOnGraph - loopCounter), y: yPos))
                 
@@ -95,6 +100,8 @@ class WeeklyGraphViewController: UIViewController {
         } catch {
             print("FAILED")
         }
+        
+        WeeklyAverageLabel.text = "Past Total Weekly Average: " + "\((WeeklyTotals / Double(loopCounter)))"
         
         return weeklyExpenseVals
     }
