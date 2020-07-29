@@ -70,7 +70,7 @@ class DailyGraphViewController: UIViewController {
             let result = try context.fetch(request)
             
             let dataArray = result as! [NSManagedObject]
-            var loopCounter = 1
+            var loopCounter = 0
             for data in dataArray.reversed() {
                 if (loopCounter == daysOnGraph + 1) {
                     break
@@ -89,7 +89,7 @@ class DailyGraphViewController: UIViewController {
                 loopCounter += 1
             }
             
-            if (dataArray.count < daysOnGraph && loopCounter != daysOnGraph) {
+            if (dataArray.count <= daysOnGraph && loopCounter != daysOnGraph) {
                 for _ in loopCounter...daysOnGraph {
                     labelDates.insert("", at: 0)
                 }
