@@ -73,7 +73,7 @@ class WeeklyGraphViewController: UIViewController {
             let dataArray = result as! [NSManagedObject]
             var loopCounter = 0
             for data in dataArray.reversed() {
-                if (loopCounter == WeeksOnGraph) {
+                if (loopCounter + 1 == WeeksOnGraph) {
                     break
                 }
                 

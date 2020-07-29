@@ -70,9 +70,9 @@ class DailyGraphViewController: UIViewController {
             let result = try context.fetch(request)
             
             let dataArray = result as! [NSManagedObject]
-            var loopCounter = 0
+            var loopCounter = 1
             for data in dataArray.reversed() {
-                if (loopCounter == daysOnGraph) {
+                if (loopCounter == daysOnGraph + 1) {
                     break
                 }
                 
@@ -83,12 +83,13 @@ class DailyGraphViewController: UIViewController {
                 let yPos = data.value(forKey: "dailyTotal") as! Double
                 print(yPos)
                 labelDates.insert(data.value(forKey: "date") as! String, at: 0)
+                print(data.value(forKey: "date") as! String)
                 dailyExpenseVals.append(BarChartDataEntry(x: Double(daysOnGraph - loopCounter), y: yPos))
                 
                 loopCounter += 1
             }
             
-            if (loopCounter != daysOnGraph) {
+            if (dataArray.count < daysOnGraph && loopCounter != daysOnGraph) {
                 for _ in loopCounter...daysOnGraph {
                     labelDates.insert("", at: 0)
                 }

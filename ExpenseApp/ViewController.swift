@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+
+
 class ViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -120,7 +122,78 @@ class ViewController: UIViewController {
         
         do {
             let result = try context.fetch(request)
-            print(result.count)
+            print("RESULT COUNT: " + "\(result.count)")
+            
+            //let Calendar = NSCalendar.current()
+            
+            
+            
+            
+            //NSCalendar.current.startOfDay(for: DateFunctions.ConvertStringToDate(date: DateFunctions.GetTodaysDate()))
+            
+            //let firstDate = DateFunctions.ConvertStringToDate(date: DateFunctions.GetTodaysDate())
+            
+            //let secondDate = DateFunctions.ConvertStringToDate(date: DateFunctions.GetTodaysDate())
+            
+            /*let formatter : DateFormatter = DateFormatter()
+            formatter.dateFormat = "M/d/yyyy"
+            let today : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: -86400) as Date)
+            print("YESTERDAY: " + today)
+            let isoDate = today
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "M/d/yyyy"
+            let newDate = dateFormatter.date(from:isoDate)!*/
+            //return newDate
+            
+            
+            let firstDate = NSCalendar.current.startOfDay(for: DateFunctions.ConvertStringToDate(date: DateFunctions.GetTodaysDate()))
+            
+            let secondDate = NSCalendar.current.startOfDay(for: DateFunctions.ConvertStringToDate(date: DateFunctions.GetTodaysDate()))
+            
+            
+            //let diffInDays = Calendar.current.dateComponents([.day], from: newDate, to: secondDate).day!
+            
+            //print("DATE: " + "\(diffInDays)")
+            
+            if ((result as! [NSManagedObject]).count > 0 && (result.last as! NSManagedObject).value(forKey: "date") as! String != DateFunctions.GetTodaysDate()) {
+                let previousSavedDate = NSCalendar.current.startOfDay(for: DateFunctions.ConvertStringToDate(date: (result.last as! NSManagedObject).value(forKey: "date") as! String))
+                let todayDate = NSCalendar.current.startOfDay(for: DateFunctions.ConvertStringToDate(date: DateFunctions.GetTodaysDate()))
+                
+                let diffInDays = Calendar.current.dateComponents([.day], from: previousSavedDate, to: todayDate).day!
+                
+                if (diffInDays > 1 && diffInDays <= 7) {
+                    for i in 1...diffInDays - 1 {
+                        let entity = NSEntityDescription.entity(forEntityName: "DailyGraphTestEntity", in: context)
+                        let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+                        newEntity.setValue(0, forKey: "dailyTotal")
+                        let formatter : DateFormatter = DateFormatter()
+                        formatter.dateFormat = "M/d/yyyy"
+                        let intervalTime = -86400 * (diffInDays - i)
+                        let date : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: Double(intervalTime)) as Date)
+                        print("THIS IS THE FORMAT FOR THE DATES: " + date)
+                        newEntity.setValue( date, forKey: "date")
+                        try context.save()
+                    }
+                } else if (diffInDays > 7) {
+                    for i in 1 ... 6 {
+                        let entity = NSEntityDescription.entity(forEntityName: "DailyGraphTestEntity", in: context)
+                        let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+                        newEntity.setValue(0, forKey: "dailyTotal")
+                        let formatter : DateFormatter = DateFormatter()
+                        formatter.dateFormat = "M/d/yyyy"
+                        let intervalTime = -86400 * (7 - i)
+                        let date : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: Double(intervalTime)) as Date)
+                        print("THIS IS THE FORMAT FOR THE DATES: " + date)
+                        newEntity.setValue( date, forKey: "date")
+                        try context.save()
+                    }
+                }
+                
+            }
+            
+            
+            
             if ((result as! [NSManagedObject]).count == 0 || (result.last as! NSManagedObject).value(forKey: "date") as! String != DateFunctions.GetTodaysDate()) {
                 let entity = NSEntityDescription.entity(forEntityName: "DailyGraphTestEntity", in: context)
                 let newEntity = NSManagedObject(entity: entity!, insertInto: context)
