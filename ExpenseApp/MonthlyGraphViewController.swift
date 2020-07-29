@@ -19,6 +19,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
     let monthDataEntityName = "MonthlyGraphTestEntity"
     @IBOutlet weak var CloseButton: UIButton!
     
+    @IBOutlet weak var MonthlyAverageLabel: UILabel!
     
     
     lazy var barChartView: BarChartView = {
@@ -89,6 +90,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
             
             let dataArray = result as! [NSManagedObject]
             var loopCounter = 0
+            var MonthlyTotals = 0.0
             for data in dataArray.reversed() {
                 if (loopCounter == MonthsOnGraph) {
                     break
@@ -103,10 +105,14 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
                 }
                 
                 let yPos = data.value(forKey: "monthlyTotal") as! Double
+                MonthlyTotals += yPos
                 monthlyExpenseVals.append(BarChartDataEntry(x: Double(xPos), y: yPos))
                 
                 loopCounter += 1
             }
+            
+            
+            MonthlyAverageLabel.text = "\((MonthlyTotals / Double(loopCounter)))"
             
             
         } catch {

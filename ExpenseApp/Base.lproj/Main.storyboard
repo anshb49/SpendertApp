@@ -452,6 +452,13 @@
                                 <color key="progressTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="trackTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12 Month Average" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNV-VP-04l">
+                                <rect key="frame" x="16" y="92" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.021231919530000001" green="1" blue="0.52932596210000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.859925176056338" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -467,11 +474,12 @@
                     </view>
                     <connections>
                         <outlet property="CloseButton" destination="48h-RR-4iS" id="5lH-Fd-AaX"/>
+                        <outlet property="MonthlyAverageLabel" destination="vNV-VP-04l" id="mhD-az-A0U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yUM-JX-Mzn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="853.79464285714278"/>
+            <point key="canvasLocation" x="136.80000000000001" y="853.44827586206895"/>
         </scene>
         <!--Weekly Graph View Controller-->
         <scene sceneID="buK-cR-VSc">
