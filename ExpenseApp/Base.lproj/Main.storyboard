@@ -452,10 +452,10 @@
                                 <color key="progressTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="trackTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12 Month Average" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNV-VP-04l">
-                                <rect key="frame" x="16" y="92" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Month Average" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNV-VP-04l">
+                                <rect key="frame" x="16" y="56" width="343" height="50"/>
+                                <color key="backgroundColor" red="0.1137265339" green="0.11372355369999999" blue="0.1137255952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="22"/>
                                 <color key="textColor" red="0.021231919530000001" green="1" blue="0.52932596210000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -463,10 +463,14 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.859925176056338" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="vEx-Kp-qZu" firstAttribute="leading" secondItem="mTe-CH-KBt" secondAttribute="leadingMargin" constant="-23" id="0MG-r2-U9q"/>
+                            <constraint firstItem="vNV-VP-04l" firstAttribute="leading" secondItem="mTe-CH-KBt" secondAttribute="leadingMargin" id="4tA-lw-RmK"/>
                             <constraint firstItem="48h-RR-4iS" firstAttribute="leading" secondItem="zSQ-JK-TnK" secondAttribute="leading" id="5Od-yZ-6j0"/>
+                            <constraint firstItem="vNV-VP-04l" firstAttribute="top" secondItem="48h-RR-4iS" secondAttribute="bottom" constant="3" id="DKk-uj-QQ0"/>
                             <constraint firstItem="vEx-Kp-qZu" firstAttribute="bottom" secondItem="48h-RR-4iS" secondAttribute="bottom" id="JBh-7q-mAL"/>
                             <constraint firstItem="vEx-Kp-qZu" firstAttribute="top" secondItem="zSQ-JK-TnK" secondAttribute="top" constant="51" id="Jkj-UC-UM0"/>
+                            <constraint firstItem="vNV-VP-04l" firstAttribute="centerX" secondItem="vEx-Kp-qZu" secondAttribute="centerX" id="bF3-Dx-4M0"/>
                             <constraint firstItem="48h-RR-4iS" firstAttribute="centerX" secondItem="mTe-CH-KBt" secondAttribute="centerX" id="f7G-Q3-jji"/>
+                            <constraint firstItem="zSQ-JK-TnK" firstAttribute="bottom" secondItem="vNV-VP-04l" secondAttribute="bottom" constant="618" id="nCQ-g8-u57"/>
                             <constraint firstItem="48h-RR-4iS" firstAttribute="centerX" secondItem="vEx-Kp-qZu" secondAttribute="centerX" id="ohT-sH-xo9"/>
                             <constraint firstItem="48h-RR-4iS" firstAttribute="top" secondItem="zSQ-JK-TnK" secondAttribute="top" id="uo4-Ku-XmT"/>
                         </constraints>

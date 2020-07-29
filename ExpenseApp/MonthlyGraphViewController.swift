@@ -112,7 +112,7 @@ class MonthlyGraphViewController: UIViewController, ChartViewDelegate {
             }
             
             
-            MonthlyAverageLabel.text = "\((MonthlyTotals / Double(loopCounter)))"
+            MonthlyAverageLabel.text = "Past 12 Month Average: " + "\((MonthlyTotals / Double(loopCounter)))"
             
             
         } catch {
