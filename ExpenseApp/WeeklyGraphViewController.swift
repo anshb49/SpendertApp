@@ -101,7 +101,9 @@ class WeeklyGraphViewController: UIViewController {
             print("FAILED")
         }
         
-        WeeklyAverageLabel.text = "Past Total Weekly Average: " + "\((WeeklyTotals / Double(loopCounter)))"
+        WeeklyAverageLabel.text = "Past Total Weekly Average: " + "\((WeeklyTotals / Double(loopCounter)).rounded())"
+        
+
         
         return weeklyExpenseVals
     }

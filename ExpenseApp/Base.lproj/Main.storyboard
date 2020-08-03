@@ -403,7 +403,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Expense Summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUy-tk-ezq">
-                                <rect key="frame" x="-5" y="0.0" width="380" height="60"/>
+                                <rect key="frame" x="-52" y="0.0" width="448" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.12941294910000001" green="0.12940967079999999" blue="0.12941190599999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="22"/>
@@ -453,25 +453,25 @@
                                 <color key="trackTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Month Average" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNV-VP-04l">
-                                <rect key="frame" x="16" y="56" width="343" height="50"/>
-                                <color key="backgroundColor" red="0.1137265339" green="0.11372355369999999" blue="0.1137255952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="0.0" y="127" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.10196178409999999" green="0.10195901239999999" blue="0.1019608751" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="22"/>
-                                <color key="textColor" red="0.021231919530000001" green="1" blue="0.52932596210000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.859925176056338" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="vEx-Kp-qZu" firstAttribute="leading" secondItem="mTe-CH-KBt" secondAttribute="leadingMargin" constant="-23" id="0MG-r2-U9q"/>
-                            <constraint firstItem="vNV-VP-04l" firstAttribute="leading" secondItem="mTe-CH-KBt" secondAttribute="leadingMargin" id="4tA-lw-RmK"/>
                             <constraint firstItem="48h-RR-4iS" firstAttribute="leading" secondItem="zSQ-JK-TnK" secondAttribute="leading" id="5Od-yZ-6j0"/>
-                            <constraint firstItem="vNV-VP-04l" firstAttribute="top" secondItem="48h-RR-4iS" secondAttribute="bottom" constant="3" id="DKk-uj-QQ0"/>
                             <constraint firstItem="vEx-Kp-qZu" firstAttribute="bottom" secondItem="48h-RR-4iS" secondAttribute="bottom" id="JBh-7q-mAL"/>
+                            <constraint firstItem="vNV-VP-04l" firstAttribute="trailing" secondItem="48h-RR-4iS" secondAttribute="trailing" id="Jb3-ie-TY0"/>
                             <constraint firstItem="vEx-Kp-qZu" firstAttribute="top" secondItem="zSQ-JK-TnK" secondAttribute="top" constant="51" id="Jkj-UC-UM0"/>
-                            <constraint firstItem="vNV-VP-04l" firstAttribute="centerX" secondItem="vEx-Kp-qZu" secondAttribute="centerX" id="bF3-Dx-4M0"/>
                             <constraint firstItem="48h-RR-4iS" firstAttribute="centerX" secondItem="mTe-CH-KBt" secondAttribute="centerX" id="f7G-Q3-jji"/>
-                            <constraint firstItem="zSQ-JK-TnK" firstAttribute="bottom" secondItem="vNV-VP-04l" secondAttribute="bottom" constant="618" id="nCQ-g8-u57"/>
+                            <constraint firstItem="vNV-VP-04l" firstAttribute="leading" secondItem="48h-RR-4iS" secondAttribute="leading" id="iVh-Op-3jX"/>
                             <constraint firstItem="48h-RR-4iS" firstAttribute="centerX" secondItem="vEx-Kp-qZu" secondAttribute="centerX" id="ohT-sH-xo9"/>
+                            <constraint firstItem="zSQ-JK-TnK" firstAttribute="bottom" secondItem="vNV-VP-04l" secondAttribute="bottom" constant="547" id="qhK-JU-Dmd"/>
+                            <constraint firstItem="vNV-VP-04l" firstAttribute="top" secondItem="48h-RR-4iS" secondAttribute="bottom" constant="74" id="ubZ-9V-kbp"/>
                             <constraint firstItem="48h-RR-4iS" firstAttribute="top" secondItem="zSQ-JK-TnK" secondAttribute="top" id="uo4-Ku-XmT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zSQ-JK-TnK"/>
@@ -510,22 +510,25 @@
                                 <color key="progressTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="trackTintColor" red="0.4657987166" green="1" blue="0.57948409850000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weekly Average" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDK-VI-Did">
-                                <rect key="frame" x="0.0" y="61" width="375" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly Average" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDK-VI-Did">
+                                <rect key="frame" x="0.0" y="129" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.1137265339" green="0.11372355369999999" blue="0.1137255952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="22"/>
-                                <color key="textColor" red="0.021231919530000001" green="1" blue="0.52932596210000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1137276366" green="0.1137216315" blue="0.1137256697" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="hDK-VI-Did" firstAttribute="top" secondItem="Vmk-NO-KfR" secondAttribute="bottom" constant="76" id="7kC-Kt-kl3"/>
+                            <constraint firstItem="hDK-VI-Did" firstAttribute="leading" secondItem="Vmk-NO-KfR" secondAttribute="leading" id="8eq-1x-Rsm"/>
                             <constraint firstItem="Vmk-NO-KfR" firstAttribute="leading" secondItem="n6Z-Pl-geH" secondAttribute="leading" id="JZ7-Oh-alP"/>
                             <constraint firstItem="Vmk-NO-KfR" firstAttribute="centerX" secondItem="u9o-Zt-LPc" secondAttribute="centerX" id="R0G-a2-H0s"/>
                             <constraint firstItem="u9o-Zt-LPc" firstAttribute="bottom" secondItem="Vmk-NO-KfR" secondAttribute="bottom" id="Y0H-JH-PyI"/>
                             <constraint firstItem="u9o-Zt-LPc" firstAttribute="top" secondItem="n6Z-Pl-geH" secondAttribute="top" constant="51" id="dBA-K6-i7I"/>
+                            <constraint firstItem="hDK-VI-Did" firstAttribute="trailing" secondItem="Vmk-NO-KfR" secondAttribute="trailing" id="lKh-do-WoV"/>
                             <constraint firstItem="u9o-Zt-LPc" firstAttribute="leading" secondItem="7Yf-il-hCb" secondAttribute="leadingMargin" constant="-23" id="thO-gE-SkZ"/>
+                            <constraint firstItem="n6Z-Pl-geH" firstAttribute="bottom" secondItem="hDK-VI-Did" secondAttribute="bottom" constant="545" id="vUe-lk-355"/>
                             <constraint firstItem="Vmk-NO-KfR" firstAttribute="centerX" secondItem="7Yf-il-hCb" secondAttribute="centerX" id="xfC-YK-0yp"/>
                             <constraint firstItem="Vmk-NO-KfR" firstAttribute="top" secondItem="n6Z-Pl-geH" secondAttribute="top" id="zfW-1D-Yz3"/>
                         </constraints>
